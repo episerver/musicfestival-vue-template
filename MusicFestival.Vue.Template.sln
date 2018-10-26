@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{AB68A530-B9B8-4B92-A8D1-BC6221FFD3D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicFestival.Vue.Template", "src\MusicFestival.Vue.Template\MusicFestival.Vue.Template.csproj", "{92C1F4EC-FD97-4D27-8393-D0B115196A37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F8D4ACE0-22E8-4057-B05F-E50D550C11B5}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.eslintignore = .eslintignore
+		.eslintrc.js = .eslintrc.js
+		.gitattributes = .gitattributes
+		package.json = package.json
+		README.md = README.md
+		setup.cmd = setup.cmd
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92C1F4EC-FD97-4D27-8393-D0B115196A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92C1F4EC-FD97-4D27-8393-D0B115196A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92C1F4EC-FD97-4D27-8393-D0B115196A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92C1F4EC-FD97-4D27-8393-D0B115196A37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{92C1F4EC-FD97-4D27-8393-D0B115196A37} = {AB68A530-B9B8-4B92-A8D1-BC6221FFD3D0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09D7AFCA-C728-4484-AEF3-3EE7AAD271B9}
+	EndGlobalSection
+EndGlobal

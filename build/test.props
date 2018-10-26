@@ -1,0 +1,17 @@
+<Project>
+    <PropertyGroup>
+        <IsTestProject>True</IsTestProject>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Moq" Version="4.5.28"/>
+        <PackageReference Include="xunit.assert" Version="2.3.1"/>
+        <PackageReference Include="xunit.core" Version="2.3.1"/>
+        <PackageReference Include="xunit.runner.console" Version="2.3.1"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="Microsoft.CSharp"/>
+        <Reference Include="System.Web"/>
+        <Reference Include="System.Web.ApplicationServices"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,200 @@
+.u-marginZero {
+    margin: 0 !important;
+}
+
+.u-marginTopZero {
+    margin-top: 0 !important;
+}
+
+.u-marginBottomZero {
+    margin-Bottom: 0 !important;
+}
+
+.u-marginTopPull {
+    margin-top: -1em !important;
+}
+
+.u-marginBottomPull {
+    margin-bottom: -1em !important;
+}
+
+.u-marginTop {
+    margin-top: 1em !important;
+}
+
+.u-marginTopHalf {
+    margin-top: .5em !important;
+}
+
+.u-marginTopDouble {
+    margin-top: 2em !important;
+}
+
+.u-marginBottom {
+    margin-bottom: 1em !important;
+}
+
+.u-marginBottomHalf {
+    margin-bottom: 0.5em !important;
+}
+
+.u-marginBottomDouble {
+    margin-bottom: 2em !important;
+}
+
+.u-marginRight {
+    margin-right: 1em !important;
+}
+
+.u-marginLeft {
+    margin-left: 1em !important;
+}
+
+.u-paddingZero {
+    padding: 0 !important;
+}
+
+.u-paddingTop{
+    padding-top: 1rem!important;
+}
+
+.u-paddingBottom{
+    padding-top: 1rem!important;
+}
+
+.u-paddingBottomDouble{
+    padding-Bottom: 2rem!important;
+}
+.u-spacer {
+    margin: 2.5em 0;
+}
+
+.u-padSides {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+
+hr.u-spacer {
+    margin: 2em 0;
+    border: none;
+}
+
+.u-noCallout {
+    -webkit-touch-callout: none !important;
+}
+
+.u-noBorder {
+    border: none !important;
+}
+
+u-slider {
+    max-height: 0 !important;
+    overflow: hidden !important;
+}
+
+.u-slider {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:all 0.5s linear;
+}
+
+.u-sliderActive {
+    max-height: 200px; /* this height should be set to lowest possible number or the animation will run too quickly */
+    opacity: 1;
+}
+
+@media print {
+    .u-hidePrint {
+        display: none !important;
+    }
+    .u-printSizeFull {
+        width: 100% !important;
+        display: block !important; /* fixes bug IB-535, firefox not printing all pages */
+    }
+}
+
+.u-highlightBox {
+    padding: .5em 1em;
+}
+
+.u-highlight:hover, .u-highlightArrow {
+    background: #F6F6F6;
+    box-shadow: 0 0 0 1px #E4E4E4;
+    position: relative;
+    border-radius: .6em;
+
+    .Heading-text {
+        background: #F6F6F6 !important;
+    }
+}
+
+.u-highlightArrow {
+    &:before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 5px;
+        right: 5px;
+        height: 30px;
+        background: url('@{basePath}/Images/arrow-grey.svg') no-repeat bottom center;
+        background-size: 100% auto;
+    }
+}
+
+.u-borderTop {
+    border-top: 1px solid #d8d8d8;
+}
+
+.u-borderBottom {
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.u-borderAllSides{
+    border: 1px solid #d8d8d8;
+}
+
+.u-listStyleNone {
+    list-style: none;
+}
+
+@media @bpXSmall{
+    .u-xsm-listStyleVertical{list-style:none;padding-left:0;
+        > li{display:block;}
+    }
+    .u-xsm-listStyleHorizontal{list-style:none;padding-left:0;white-space:nowrap;
+        > li{display:inline-block;white-space:normal;}
+    }
+}
+@media @bpSmall{
+    .u-sm-listStyleVertical{list-style:none;padding-left:0;
+        > li{display:block;}
+    }
+    .u-sm-listStyleHorizontal{list-style:none;padding-left:0;white-space:nowrap;
+        > li{display:inline-block;white-space:normal;}
+    }
+}
+@media @bpMedium{
+    .u-md-listStyleVertical{list-style:none;padding-left:0;
+        > li{display:block;}
+    }
+    .u-md-listStyleHorizontal{list-style:none;padding-left:0;white-space:nowrap;
+        > li{display:inline-block;white-space:normal;}
+    }
+}
+@media @bpLarge{
+    .u-lg-listStyleVertical{list-style:none;padding-left:0;
+        > li{display:block;}
+    }
+    .u-lg-listStyleHorizontal{list-style:none;padding-left:0;white-space:nowrap;
+        > li{display:inline-block;white-space:normal;}
+    }
+}
+@media @bpXLarge{
+    .u-xlg-listStyleVertical{list-style:none;padding-left:0;
+        > li{display:block;}
+    }
+    .u-xlg-listStyleHorizontal{list-style:none;padding-left:0;white-space:nowrap;
+        > li{display:inline-block;white-space:normal;}
+    }
+}

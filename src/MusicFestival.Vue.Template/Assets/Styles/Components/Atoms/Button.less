@@ -1,0 +1,27 @@
+/*#
+
+The button classes are best applied to links and buttons.
+These components can be used in forms, as calls to action, or as part of the general UI of the site/app.
+*/
+
+@import "../../common/variables.less";
+
+.Button, button {
+    background: @colorTurquoise;
+    border-radius: 2em;
+    color: @colorBlue;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    padding: 12px 26px;
+    font-family: @fontFamilyPrimary;
+    box-shadow: 0 0 12px 0 fade(@colorBlack, 36%);
+    border: 0;
+    transition: all 300ms;
+    &:hover{
+        text-decoration: none;
+        background-color: @colorBlue;
+        color: @colorTurquoise;
+    }
+}

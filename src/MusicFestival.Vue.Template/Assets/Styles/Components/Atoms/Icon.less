@@ -1,0 +1,27 @@
+/*#
+
+Icon component displaying icons using an Icomoon.io generated icon web font.
+
+To add or remove icons navigate to https://icomoon.io/app/ and import "selection.json" from the Styles/Fonts/Icons folder.
+
+**Usage**
+To use an icon in a different component start by importing the Icon.less file:
+@import (reference) "../Atoms/Icon.less";
+
+Then extend the CSS rule with .Icon and set "content" to the icon you're looking for:
+.MyComponent {
+    &:after {
+        &:extend(.Icon);
+        content: @Icon--checkmark;
+    }
+}
+
+Examples:
+
+<div>
+    <span class="Icon Icon--checkmark"></span>
+</div>
+
+*/
+
+@import "../../common/variables.less";

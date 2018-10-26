@@ -1,0 +1,30 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{cs,svc,asax,aspx,cshtml,csproj,sln}]
+charset = utf-8-bom
+
+[*.{config,csproj,nuspec,xml}]
+indent_size = 2
+
+[*.sln]
+indent_style = tab
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{asax,aspx,config,cs,cshtml,csproj,nuspec,sln,svc,xml}]
+insert_final_newline = false
+
+# Ignore these files
+[{LICENSE,src/MusicFestival.Vue.Template/App_Data/**,src/MusicFestival.Vue.Template/modules/**,node_modules/**}]
+indent_style = unset
+indent_size = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset

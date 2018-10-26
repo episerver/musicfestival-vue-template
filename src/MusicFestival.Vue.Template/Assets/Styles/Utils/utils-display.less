@@ -1,0 +1,122 @@
+@import (reference) "../common/variables.less";
+
+/* stylelint-disable selector-no-qualifying-type */
+
+/**
+* Display-type utilities
+*/
+
+.u-hidden {
+    display: none !important;
+}
+
+/**
+* Completely remove from the flow but leave available to screen readers.
+*/
+.u-hiddenVisually {
+    position: absolute !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+.u-block {
+    display: block !important;
+}
+
+.u-inline {
+    display: inline !important;
+}
+
+/**
+* 1. Fix for Firefox bug: an image styled `max-width:100%` within an
+* inline-block will display at its default size, and not limit its width to
+* 100% of an ancestral container.
+*/
+.u-inlineBlock {
+    display: inline-block !important;
+    max-width: 100%; /* 1 */
+}
+
+.u-table {
+    display: table !important;
+}
+
+.u-tableRow {
+    display: table-row !important;
+}
+
+.u-tableCell {
+    display: table-cell !important;
+}
+
+.u-flex {
+    display: flex !important;
+
+    .is-no-flexbox & {
+        display: inline-block !important;
+    }
+}
+
+/**
+* Show/hide depending on Media Query breakpoints.
+*/
+
+.u-state(@prefixXSmall, @bpXSmall);
+.u-state(@prefixSmall, @bpSmall);
+.u-state(@prefixMedium, @bpMedium);
+.u-state(@prefixLarge, @bpLarge);
+.u-state(@prefixXLarge, @bpXLarge);
+
+.u-state(@prefix: ~"", @breakpoint) {
+    // when no active media query, hide the element
+    .u-@{prefix}block,
+    .u-@{prefix}inline,
+    .u-@{prefix}inlineBlock,
+    .u-@{prefix}tableCell,
+    .u-@{prefix}flex {
+        &:extend(.u-hidden);
+    }
+
+    @media @breakpoint {
+        // hide element in this media query
+        .u-@{prefix}hidden {
+            display: none !important;
+        }
+
+        // show element in this media query
+        .u-@{prefix}block {
+            display: block !important;
+        }
+
+        .u-@{prefix}inline {
+            display: inline !important;
+        }
+
+        .u-@{prefix}inlineBlock {
+            display: inline-block !important;
+            max-width: 100%; /* 1 */
+        }
+
+        .u-@{prefix}tableCell {
+            display: table-cell !important;
+        }
+
+        .u-@{prefix}flex {
+            display: flex !important;
+
+            .is-no-flexbox & {
+                display: inline-block !important;
+            }
+        }
+    }
+}
+
+.u-md-show{
+    @media @bpMedium{
+        display: block;
+    }
+}

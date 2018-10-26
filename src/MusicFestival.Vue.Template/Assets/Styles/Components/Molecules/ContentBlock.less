@@ -1,0 +1,100 @@
+@import "../../common/variables.less";
+
+.Preview {
+    > .u-md-size1of2, > .u-md-size1of3 {
+        .Grid .Grid-cell {
+            width: 100% !important;
+        }
+    }
+}
+
+.ContentArea {
+    > .u-md-size1of2,
+    > .u-md-size1of3 {
+        .ContentBlock {
+            .Grid-cell {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+footer {
+    background-color: fade(@colorPink, 24%);
+    background-image: url('/Assets/Images/pattern-wave.svg');
+
+    .ContentBlock {
+
+        .Page-container {
+            max-width: 920px;
+            padding: 3em 1em 0;
+        }
+
+        h2 {
+            font-size: 48px;
+        }
+
+        .Grid-cell:first-child {
+            order: 1;
+            text-align: center;
+
+            @media @bpMedium {
+                order: 0;
+            }
+        }
+    }
+}
+
+.ContentBlock {
+    ol {
+        list-style-type: none;
+        padding: 0;
+        line-height: 1.8;
+        margin-bottom: 2em;
+        font-size: 20px;
+
+        li {
+            display: inline-block;
+            position: relative;
+            padding-right: 20px;
+
+            &:after {
+                content: '';
+                width: 4px;
+                height: 4px;
+                position: absolute;
+                top: 50%;
+                right: 6px;
+                transform: translateY(-50%);
+                background: @colorPink;
+                border-radius: 50%;
+            }
+
+            &:last-child {
+                &:after {
+                    content: none;
+                }
+            }
+        }
+    }
+
+    a {
+        background: @colorTurquoise;
+        border-radius: 2em;
+        color: @colorBlue;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        padding: 12px 26px;
+        font-family: @fontFamilyPrimary;
+        box-shadow: 0 0 12px 0 fade(@colorBlack, 36%);
+        border: 0;
+        transition: all 300ms;
+        &:hover{
+            text-decoration: none;
+            background-color: @colorBlue;
+            color: @colorTurquoise;
+        }
+    }
+}

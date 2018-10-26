@@ -1,0 +1,33 @@
+@import "/Assets/bundled/main.bundle.css";
+
+p {
+    EditMenuTitle: Paragraph;
+    EditMenuName: P;
+}
+
+h1 {
+    EditMenuTitle: Headings;
+    EditMenuName: H1;
+}
+
+h2 {
+    EditMenuName: H2;
+}
+
+h3 {
+    EditMenuName: H3;
+}
+
+a.Button {
+    EditMenuTitle: Buttons;
+    EditMenuName: Button;
+}
+
+ol.List--bulleted {
+    EditMenuTitle: List;
+    EditMenuName: Horizontal List;
+}
+
+body.epi_visualaid a.Button {
+    background-color: #41fff5;
+}

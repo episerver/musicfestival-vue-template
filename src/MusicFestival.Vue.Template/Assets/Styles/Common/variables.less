@@ -1,0 +1,81 @@
+@basePath: '/Assets';
+
+// - Fonts -
+@baseFontSize: 16;
+@fontFamilyPrimary: "barlow", "Helvetica", "Arial", sans-serif;
+@fontFamilySecondary: "ubuntu", "Helvetica", "Arial", serif;
+@fontHeading: "ubuntu-bold";
+@fontSubHeading: "barlow-bold";
+
+// - Container Width -
+@widthContainer: 1204px;
+
+// - Text Sizes -
+@textSizeXSmall: unit(12 / @baseFontSize, em); // 12px
+@textSizeSmall:  unit(14 / @baseFontSize, em); // 14px
+@textSizeMedium: unit(16 / @baseFontSize, em); // 16px
+@textSizeLarge:  unit(18 / @baseFontSize, em); // 18px
+@textSizeXLarge: unit(20 / @baseFontSize, em); // 20px
+
+// - Colors -
+@backgroundColor: @colorBlue;
+@backgroundGradient: linear-gradient(to bottom, rgba(255,0,0,0) 0%, rgba(255,0,0,.35) 100%);
+@colorBlack: #000;
+@colorWhite: #fff;
+@colorBlue: #1A237E;
+@colorTurquoise: #41FFF5;
+@colorPink: #EC407A;
+//# Text
+@colorText: #fff;
+@colorTextLight: #aaa;
+
+//# Links
+@colorLink: #fff;
+@colorLinkHover: #ccc;
+
+// - Space -
+@spaceDefault: unit(20 / @baseFontSize, em);
+@spaceXSmall: @spaceDefault / 2;
+@spaceSmall: @spaceDefault / 1.5;
+@spaceMedium: @spaceDefault;
+@spaceLarge: @spaceDefault * 1.5;
+@spaceXLarge: @spaceDefault * 2;
+
+@space: 1em;
+@space-and-half: @space*1.5;
+@space-double: @space*2;
+@space-triple: @space*3;
+@space-quad: @space*4;
+@space-half: @space/2;
+@space-quarter: @space/4;
+
+
+// - Breakpoint Widths -
+@widthXSmall: (420 / @baseFontSize);
+@widthSmall: (544 / @baseFontSize);
+@widthMedium: (768 / @baseFontSize);
+@widthLarge: (920 / @baseFontSize);
+@widthXLarge: (1200 / @baseFontSize);
+
+// - Breakpoint Media Queries -
+@bpXSmall: ~ "only screen and (min-width: @{widthXSmall}em), print";
+@bpSmall: ~ "only screen and (min-width: @{widthSmall}em), print";
+@bpMedium: ~ "only screen and (min-width: @{widthMedium}em), print";
+@bpLarge: ~ "only screen and (min-width: @{widthLarge}em), print";
+@bpXLarge: ~ "only screen and (min-width: @{widthXLarge}em)";
+
+@bpMediumMax: ~ "only screen and (max-width: @{widthMedium}em), print";
+
+
+// - Size Prefixes -
+@prefixXSmall: ~ "xsm-";
+@prefixSmall: ~ "sm-";
+@prefixMedium: ~ "md-";
+@prefixLarge: ~ "lg-";
+@prefixXLarge: ~ "xlg-";
+
+// menu
+@menuTransition: left .4s ease-in-out;
+
+// Grid
+@gutterSize: 24px; // needs to be in pixels

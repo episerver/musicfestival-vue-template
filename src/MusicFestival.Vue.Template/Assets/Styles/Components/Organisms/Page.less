@@ -1,0 +1,132 @@
+/*#
+
+Component for containing the entire page. Useful for setting page wide styling.
+It also has a .Page-container that is used for containing the site within the max-width.
+
+*/
+
+@import "../../common/variables.less";
+
+.Page {
+    padding: 0;
+    background-color: @backgroundColor;
+    background-image: @backgroundGradient;
+}
+
+.PageHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 5;
+    align-items: center;
+}
+
+.PageHeader-title {
+    margin: 0 .5em;
+    font-family: @fontFamilySecondary;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.Page-container {
+    max-width: @widthContainer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Page-main {
+    padding: 0 @spaceMedium;
+}
+
+
+
+#content {
+    min-height: ~"calc(100vh - 119px)";
+    padding-top: 60px;
+}
+
+// If we're logged in and the admin bar is showing, move everything down for it.
+.logged-in #content {
+    min-height: ~"calc(100vh - 181px)";
+}
+
+.container {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding-left: @space;
+    padding-right: @space;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &.no-padding {
+        padding: 0;
+    }
+
+    &.margin-top {
+        margin-top: @space-double;
+    }
+
+    &.margin-bottom {
+        margin-bottom: @space-double;
+    }
+
+    &.margin-both {
+        margin-top: @space-double;
+        margin-bottom: @space-double;
+    }
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media @bpLarge {
+    #content {
+        min-height: ~"calc(100vh - 94px)";
+        padding-top: 90px;
+    }
+
+    // If we're logged in and the admin bar is showing, move everying down for it.
+    .logged-in #content {
+        min-height: ~"calc(100vh - 127px)";
+    }
+
+    .container {
+        &.margin-top {
+            margin-top: @space*4;
+        }
+
+        &.margin-bottom {
+            margin-bottom: @space*4;
+        }
+
+        &.margin-both {
+            margin-top: @space*4;
+            margin-bottom: @space*4;
+        }
+    }
+
+    .flex {
+        flex-direction: row;
+
+        .half {
+            width: 50%;
+        }
+
+        .one-third {
+            width: 33.333333%;
+        }
+
+        .two-thirds {
+            width: 66.666666%;
+        }
+    }
+}

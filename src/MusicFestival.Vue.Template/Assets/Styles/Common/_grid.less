@@ -1,0 +1,185 @@
+.Grid {
+    display: block; /* 1 */
+    font-size: 0; /* 2 */
+    margin: 0; /* 1 */
+    padding: 0; /* 1 */
+    text-align: left; /* 3 */
+}
+
+/**
+* Modifier: center align all grid cells
+*/
+
+.Grid--alignCenter {
+    text-align: center;
+}
+
+/**
+* Modifier: right align all grid cells
+*/
+
+.Grid--alignRight {
+    text-align: right;
+}
+
+/**
+* Modifier: middle-align grid cells
+*/
+
+.Grid--alignMiddle > .Grid-cell {
+    vertical-align: middle;
+}
+
+/**
+* Modifier: bottom-align grid cells
+*/
+
+.Grid--alignBottom > .Grid-cell {
+    vertical-align: bottom;
+}
+
+/**
+* Modifier: gutters
+*
+* NOTE: this can trigger a horizontal scrollbar if the component is as wide as
+* the viewport. Use padding on a container, or `overflow-x:hidden` to protect
+* against it.
+*/
+
+.Grid--withGutter {
+    margin-left: (-0.5px * @gutterSize);
+    margin-right: (-0.5px * @gutterSize);
+}
+
+.Grid--withOuterGutter {
+    margin-left: (0.5px * @gutterSize);
+    margin-right: (0.5px * @gutterSize);
+}
+
+.Grid--withGutter > .Grid-cell {
+    padding-left: (0.5px * @gutterSize);
+    padding-right: (0.5px * @gutterSize);
+}
+
+/* Extra wide gutters */
+
+.Grid--withWideGutter {
+    margin-left: (-1px * @gutterSize);
+    margin-right: (-1px * @gutterSize);
+
+    &.Grid--withOuterGutter {
+        margin-left: (1px * @gutterSize);
+        margin-right: (1px * @gutterSize);
+    }
+}
+
+.Grid--withWideGutter > .Grid-cell {
+    padding-left: (1px * @gutterSize);
+    padding-right: (1px * @gutterSize);
+}
+
+.Grid--hasArticleWidth{
+        max-width:855px;
+        margin:0 auto;
+    }
+
+// special case, use margin instead of padding when having borderAllSides utility turned on
+.Grid--hasBorders > .Grid-cell > a{display:block;width:100%;position:relative;overflow:hidden;}
+.Grid--hasBorders > .Grid-cell > a > img{vertical-align:middle;}
+
+@media @bpMedium {
+    .Grid--withExtraWideGutter {
+        margin-left: (-2px * @gutterSize);
+        margin-right: (-2px * @gutterSize);
+
+        &.Grid--withOuterGutter {
+            margin-left: (2px * @gutterSize);
+            margin-right: (2px * @gutterSize);
+        }
+    }
+
+    .Grid--withExtraWideGutter > .Grid-cell {
+        padding-left: (2px * @gutterSize);
+        padding-right: (2px * @gutterSize);
+    }
+}
+
+.Grid--equalHeight {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Grid--equalHeight > .Grid-cell {
+    display: flex;
+}
+
+.Grid--fit {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Grid--fit > .Grid-cell {
+    flex: 1 1 0%;
+}
+
+/* Gutters above and below a Grid cell */
+
+.Grid--withGutterY {
+    margin-top: (-1px * @gutterSize);
+    margin-bottom: (-1px * @gutterSize);
+    line-height:0;
+}
+
+.Grid--withGutterY > .Grid-cell {
+    margin-top: (0.5px * @gutterSize);
+    margin-bottom: (0.5px * @gutterSize);
+}
+
+.Grid--withGutterWideY > .Grid-cell {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+/* Grid cell
+    ========================================================================== */
+
+/**
+* No explicit width by default. Rely on combining `Grid-cell` with a dimension
+* utility or a component class that extends 'grid'.
+*
+* 1. Fundamentals of the non-float grid layout.
+* 2. Reset font size change made in `Grid`.
+* 3. Keeps content correctly aligned with the grid direction.
+* 4. Controls vertical positioning of units.
+* 5. Make cells full-width by default.
+*/
+
+.Grid-cell {
+    box-sizing: border-box;
+    display: inline-block; /* 1 */
+    font-size: 16px; /* 2 */
+    font-size: 1rem; /* 2 */
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: left; /* 3 */
+    vertical-align: top; /* 4 */
+    width: 100%; /* 5 */
+}
+
+/**
+* Modifier: horizontally center one unit
+* Set a specific unit to be horizontally centered. Doesn't affect
+* any other units. Can still contain a child `Grid` object.
+*/
+
+.Grid-cell--center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Grid-cell--text-center {
+    text-align: center;
+}

@@ -1,0 +1,36 @@
+/*#
+Component for the header section.
+*/
+
+@import "../../common/variables.less";
+
+@Header-bg: #f4f4f4;
+@Header-border: darken(#f4f4f4, 5%);
+
+.Header {
+    border-bottom: 1px solid @Header-border;
+    width: 100%;
+}
+
+.Header-secondary {
+    padding: 0 @spaceMedium;
+    background: @Header-bg;
+    text-align: right;
+}
+
+.Header-primary {
+    padding: (@spaceLarge - .5em) @spaceMedium;
+}
+
+.Header-primaryContainer {
+    display: flex;
+    align-items: center;
+}
+
+.Header-logo {
+}
+
+.Header-primaryNav {
+    flex: 1 1 auto;
+    text-align: right;
+}

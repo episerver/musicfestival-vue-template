@@ -1,0 +1,254 @@
+@import "../../common/variables.less";
+
+/*#
+**Core grid component**
+
+The Grid-cell should be combined with a utils-size class for the specific breakpoint you want to target.
+
+DO NOT apply dimension or offset utilities to the `Grid` element. All cell
+widths and offsets should be applied to child grid cells.
+*/
+
+/* stylelint-disable declaration-property-unit-whitelist, no-duplicate-selectors */
+
+@Grid-gutterXsm: unit(@spaceXSmall * @baseFontSize, px);
+@Grid-gutterSm:  unit(@spaceSmall  * @baseFontSize, px);
+@Grid-gutterMd:  unit(@spaceMedium * @baseFontSize, px);
+@Grid-gutterLg:  unit(@spaceLarge  * @baseFontSize, px);
+@Grid-gutterXlg: unit(@spaceXLarge * @baseFontSize, px);
+
+@Grid-gutterDefault: @Grid-gutterLg;
+
+.Grid {
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.Grid-cell {
+    flex: 0 0 100%;
+    box-sizing: inherit;
+}
+
+.Grid-cell--fit {
+    flex: 0 0 auto !important;
+}
+
+.Grid-cell--center {
+    display: block !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+.Grid--alignCenter {
+    justify-content: center;
+}
+
+.Grid--alignRight {
+    justify-content: flex-end;
+}
+
+.Grid--alignMiddle {
+    align-items: center;
+}
+
+.Grid--alignBottom {
+    align-items: flex-end;
+}
+
+.Grid--fit > .Grid-cell {
+    flex: 1 1 0%;
+}
+
+.Grid--equalHeight > .Grid-cell {
+    display: flex;
+}
+
+/**
+* Browser fallback for Flexible Box Layout.
+* Can also be forced using .Grid--simple.
+*/
+
+.is-no-flexbox .Grid,
+.Grid--simple {
+    display: block;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+
+    & > .Grid-cell {
+        flex: none;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 16px;
+        font-size: 1rem;
+        margin-right: 0;
+        margin-left: 0;
+        padding-right: 0;
+        padding-left: 0;
+        text-align: left;
+        vertical-align: top;
+        width: 100%;
+    }
+
+    &.Grid--alignCenter {
+        text-align: center;
+    }
+
+    &.Grid--alignRight {
+        text-align: right;
+    }
+
+    &.Grid--alignMiddle > .Grid-cell {
+        vertical-align: middle;
+    }
+
+    &.Grid--alignBottom > .Grid-cell {
+        vertical-align: bottom;
+    }
+
+    &.Grid--fit {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        margin: 0 !important;
+
+        & > .Grid-cell {
+            display: table-cell;
+            width: auto;
+
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+/**
+* Grid Gutter Sizes
+* Wrap in .Grid to increase specificity.
+* All gutters are in Pixels to support both Flexbox and Simple mode.
+*
+* Format: Grid--gutter[direction:A|V|H][size:xsm|sm|md|lg|xlg]
+* Examples: Grid--gutterA (All), Grid--gutterH (Horizontal), Grid--gutterHlg (large horizontal gutter)
+*
+* Gutter directions:
+*    A = all (right, left, top, bottom)
+*    H = horizontal (right, left)
+*    V = vertical (top, bottom)
+*
+* Gutter sizes:
+*    xs = xsmall
+*	  s  = small
+*	  m  = medium
+*	  l  = large
+*	  xl = xlarge
+*/
+
+.Grid {
+    /**
+    * Horizontal gutters (left & right)
+    */
+    .Grid--gutterHorizontal(@gutter) {
+        margin-left: (-0.5 * @gutter);
+        margin-right: (-0.5 * @gutter);
+
+        & > .Grid-cell {
+            padding-left: (0.5 * @gutter);
+            padding-right: (0.5 * @gutter);
+        }
+    }
+
+    // Gutter Horizontal Default
+    &.Grid--gutterH, &.Grid--gutterA {
+        .Grid--gutterHorizontal(@Grid-gutterDefault);
+    }
+
+    // Gutter Horizontal  XSmall
+    &.Grid--gutterHxsm, &.Grid--gutterAxsm {
+        .Grid--gutterHorizontal(@Grid-gutterXsm);
+    }
+
+    // Gutter Horizontal  Small
+    &.Grid--gutterHsm, &.Grid--gutterAsm {
+        .Grid--gutterHorizontal(@Grid-gutterSm);
+    }
+
+    // Gutter Horizontal  Medium
+    &.Grid--gutterHmd, &.Grid--gutterAmd {
+        .Grid--gutterHorizontal(@Grid-gutterMd);
+    }
+
+    // Gutter Horizontal  Large
+    &.Grid--gutterHlg, &.Grid--gutterAlg {
+        .Grid--gutterHorizontal(@Grid-gutterLg);
+    }
+
+    // Gutter Horizontal  XLarge
+    &.Grid--gutterHxlg, &.Grid--gutterAxlg {
+        .Grid--gutterHorizontal(@Grid-gutterXlg);
+    }
+
+    /**
+    * Vertical gutters (top & bottom)
+    */
+    .Grid--gutterVertical(@gutter) {
+        margin-top: (-0.5 * @gutter);
+        margin-bottom: (-0.5 * @gutter);
+
+        & > .Grid-cell {
+            padding-top: (0.5 * @gutter);
+            padding-bottom: (0.5 * @gutter);
+        }
+    }
+
+    // Gutter Vertical Default
+    &.Grid--gutterV, &.Grid--gutterA {
+        .Grid--gutterVertical(@Grid-gutterDefault);
+    }
+
+    // Gutter Vertical XSmall
+    &.Grid--gutterVxsm, &.Grid--gutterAxsm {
+        .Grid--gutterVertical(@Grid-gutterXsm);
+    }
+
+    // Gutter Vertical Small
+    &.Grid--gutterVsm, &.Grid--gutterAsm {
+        .Grid--gutterVertical(@Grid-gutterSm);
+    }
+
+    // Gutter Vertical Medium
+    &.Grid--gutterVmd, &.Grid--gutterAmd {
+        .Grid--gutterVertical(@Grid-gutterMd);
+    }
+
+    // Gutter Vertical Large
+    &.Grid--gutterVlg, &.Grid--gutterAlg {
+        .Grid--gutterVertical(@Grid-gutterLg);
+    }
+
+    // Gutter Vertical XLarge
+    &.Grid--gutterVxlg, &.Grid--gutterAxlg {
+        .Grid--gutterVertical(@Grid-gutterXlg);
+    }
+}
+
+.FlexGrid{
+    display: flex;
+    &-cell{
+        &--fluid{
+            flex-grow: 1;
+        }
+    }
+}
+
+.Grid--rowReverse{
+    flex-direction: row-reverse;
+}

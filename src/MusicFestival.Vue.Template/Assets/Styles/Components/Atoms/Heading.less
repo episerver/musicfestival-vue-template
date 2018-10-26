@@ -1,0 +1,88 @@
+@import (reference) "../../common/variables.less";
+
+@Heading-color: @colorText;
+@Heading-size1: 80px;
+@Heading-size2: 80px;
+@Heading-size3: 48px;
+@Heading-size4: 32px;
+@Heading-size5: 22px;
+@Heading-size6: 14px;
+
+.Heading {
+    display: block;
+    margin-top: 0;
+    margin-bottom: .5em;
+    color: @Heading-color;
+    font-weight: 700;
+    line-height: 1em;
+    text-transform: lowercase;
+    font-family: @fontFamilySecondary;
+
+    a:hover & {
+        color: @colorLinkHover;
+    }
+}
+
+.Heading--h1, h1 {
+    &:extend(.Heading all);
+    font: 48px/50px @fontHeading;
+    margin: .25em 0;
+
+    @media @bpMedium {
+        font-size: unit(@Heading-size1/@baseFontSize, em);
+    }
+}
+
+.Heading--h2, h2 {
+    &:extend(.Heading all);
+    font-size: unit((@Heading-size2*.65)/@baseFontSize, em);
+    margin: 20px 0 10px;
+
+    @media @bpMedium {
+        font-size: unit(@Heading-size2/@baseFontSize, em);
+    }
+}
+
+.Heading--h3, h3 {
+    &:extend(.Heading all);
+    font-size: unit((@Heading-size3*.75)/@baseFontSize, em);
+    font-family: @fontSubHeading;
+
+    @media @bpMedium {
+        font-size: unit(@Heading-size3/@baseFontSize, em);
+    }
+}
+
+.Heading--h4, h4 {
+    &:extend(.Heading all);
+    font-weight: 300;
+    font-size: 18px;
+
+    @media @bpMedium {
+        font-size: unit(@Heading-size4/@baseFontSize, em);
+    }
+}
+
+.Heading--h5, h5, .Heading--h6, h6 {
+    &:extend(.Heading all);
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    font-family: @fontFamilyPrimary;
+    text-transform: uppercase;
+    font-size: 18px;
+
+    @media @bpMedium {
+        font-size: unit(@Heading-size5/@baseFontSize, em);
+    }
+}
+
+.Heading--h6, h6 {
+    &:extend(.Heading all);
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-size: 1em;
+
+    @media @bpMedium {
+        font-size: unit(@Heading-size6/@baseFontSize, em);
+    }
+}

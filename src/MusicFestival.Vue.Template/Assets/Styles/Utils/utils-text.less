@@ -1,0 +1,103 @@
+@import (reference) "../common/variables.less";
+
+/**
+* Text font size.
+*/
+
+.u-textXSmall {
+    font-size: @textSizeXSmall !important;
+}
+.u-textSmall {
+    font-size: @textSizeSmall !important;
+}
+.u-textMedium,
+.u-textNormal {
+    font-size: @textSizeMedium !important;
+}
+.u-textLarge {
+    font-size: @textSizeLarge !important;
+}
+.u-textXLarge {
+    font-size: @textSizeXLarge !important;
+}
+
+/**
+* Text font weights
+*/
+
+.u-textWeightThin {
+    font-weight: 100 !important;
+}
+.u-textWeightLight {
+    font-weight: 200 !important;
+}
+.u-textWeightNormal {
+    font-weight: normal !important;
+}
+.u-textWeightMedium {
+    font-weight: 500 !important;
+}
+.u-textWeightBold {
+    font-weight: bold !important;
+}
+
+/**
+* Word breaking
+*
+* Break strings when their length exceeds the width of their container.
+*/
+
+.u-textBreak {
+    word-wrap: break-word !important;
+}
+
+/**
+* Horizontal text alignment
+*/
+
+.u-textCenter {
+    text-align: center !important;
+}
+
+.u-textLeft {
+    text-align: left !important;
+}
+
+.u-textRight {
+    text-align: right !important;
+}
+
+/**
+* Prevent whitespace wrapping
+*/
+
+.u-textNoWrap {
+    white-space: nowrap !important;
+}
+
+/**
+* Text truncation
+*
+* Prevent text from wrapping onto multiple lines, and truncate with an
+* ellipsis.
+*
+* 1. Ensure that the node has a maximum width after which truncation can
+*    occur.
+* 2. Fix for IE 8/9 if `word-wrap: break-word` is in effect on ancestor
+*    nodes.
+*/
+
+.u-textTruncate {
+    max-width: 100%; /* 1 */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important; /* 2 */
+}
+
+/*
+* Inherit the ancestor's text color.
+*/
+.u-textInheritColor {
+    color: inherit !important;
+}

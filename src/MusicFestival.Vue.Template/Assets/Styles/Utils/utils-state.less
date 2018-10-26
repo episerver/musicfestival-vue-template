@@ -1,0 +1,115 @@
+/**
+* Indicate that interaction will result in an (in)action.
+*/
+
+.u-isActionable {
+    cursor: pointer !important;
+}
+
+.u-isDisabled {
+    cursor: default !important;
+}
+
+.u-isDraggable {
+    cursor: move !important;
+}
+
+/**
+* Completely remove from the flow and screen readers.
+*/
+
+.u-isHidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/**
+* Display a hidden-by-default element.
+*/
+
+.u-isShown {
+    display: block !important;
+    visibility: visible !important;
+}
+
+table.u-isShown {
+    display: table !important;
+}
+
+tr.u-isShown,
+tr.u-isShown {
+    display: table-row !important;
+}
+
+td.u-isShown,
+th.u-isShown {
+    display: table-cell !important;
+}
+
+/* Show/hide depending on current breakpoint */
+
+.u-@{prefixXSmall}isShown, .u-@{prefixXSmall}isShownInline, .u-@{prefixXSmall}isShownInlineBlock,
+.u-@{prefixSmall}isShown, .u-@{prefixSmall}isShownInline, .u-@{prefixSmall}isShownInlineBlock,
+.u-@{prefixMedium}isShown, .u-@{prefixMedium}isShownInline, .u-@{prefixMedium}isShownInlineBlock,
+.u-@{prefixLarge}isShown, .u-@{prefixLarge}isShownInline, .u-@{prefixLarge}isShownInlineBlock,
+.u-@{prefixXLarge}isShown, .u-@{prefixXLarge}isShownInline, .u-@{prefixXLarge}isShownInlineBlock
+{
+    display: none !important;
+}
+.mediaQueryUtils(@prefix: ~'', @breakpoint) {
+    @media @breakpoint {
+        .u-@{prefix}isShown {
+            display: block !important;
+        }
+        .u-@{prefix}isShownInlineBlock {
+            display: inline-block !important;
+        }
+        .u-@{prefix}isShownInline {
+            display: inline-block !important;
+        }
+        th.u-@{prefix}isShown,
+        td.u-@{prefix}isShown {
+            display: table-cell !important;
+        }
+
+        .u-@{prefix}isHidden {
+            display: none !important;
+        }
+
+        .u-@{prefix}inlineBlock {
+            display: inline-block !important;
+        }
+    }
+}
+
+.mediaQueryUtils(@prefixXSmall, @bpXSmall);
+.mediaQueryUtils(@prefixSmall, @bpSmall);
+.mediaQueryUtils(@prefixMedium, @bpMedium);
+.mediaQueryUtils(@prefixLarge, @bpLarge);
+.mediaQueryUtils(@prefixXLarge, @bpXLarge);
+
+/**
+* Completely remove from the flow but leave available to screen readers.
+*/
+
+.u-isHiddenVisually {
+    position: absolute !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+/**
+* Control visibility without affecting flow.
+*/
+
+.u-isInvisible {
+    visibility: hidden !important;
+}
+
+.u-isVisible {
+    visibility: visible !important;
+}
