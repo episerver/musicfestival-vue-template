@@ -1,12 +1,8 @@
-﻿using EPiServer.Core;
-using EPiServer.Globalization;
+﻿using EPiServer.Globalization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace ContentDeliveryExtendedRouting.Routing
@@ -40,7 +36,7 @@ namespace ContentDeliveryExtendedRouting.Routing
 
                 var property = routingContext.GetCustomRouteData<string>(RoutingConstants.RoutedPropertyKey);
                 var shouldGetChildren = routingContext.GetCustomRouteData<string>(RoutingConstants.ChildrenKey);
-                var contentApiChildPath = $"/{EPiServer.ContentApi.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}/children";
+                var contentApiChildPath = $"/{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}/children";
 
                 if (bool.TryParse(shouldGetChildren, out bool result) && result)
                 {
@@ -49,8 +45,8 @@ namespace ContentDeliveryExtendedRouting.Routing
                 else
                 {
                     httpContext.RewritePath(property != null ?
-                        $"/{EPiServer.ContentApi.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}?{RoutingConstants.RoutedPropertyKey}={property}" :
-                        $"/{EPiServer.ContentApi.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}");
+                        $"/{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}?{RoutingConstants.RoutedPropertyKey}={property}" :
+                        $"/{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}");
                 }
 
 

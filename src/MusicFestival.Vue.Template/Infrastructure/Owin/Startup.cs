@@ -1,14 +1,14 @@
-﻿using System;
+﻿using EPiServer.Cms.UI.AspNetIdentity;
+using EPiServer.ContentApi.Cms.Helpers.Internal;
+using EPiServer.ContentApi.OAuth;
+using EPiServer.Core;
+using EPiServer.Web.Routing;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using EPiServer.ContentApi.Authorization;
-using EPiServer.Cms.UI.AspNetIdentity;
-using Microsoft.AspNet.Identity.Owin;
-using EPiServer.Web.Routing;
-using EPiServer.Core;
-using Microsoft.AspNet.Identity;
-using EPiServer.ContentApi;
+using System;
 
 [assembly: OwinStartup(typeof(MusicFestival.Template.Infrastructure.Owin.Startup))]
 namespace MusicFestival.Template.Infrastructure.Owin

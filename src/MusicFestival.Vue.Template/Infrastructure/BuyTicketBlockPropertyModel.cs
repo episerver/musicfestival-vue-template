@@ -1,4 +1,4 @@
-﻿using EPiServer.ContentApi.Core;
+﻿using EPiServer.ContentApi.Core.Serialization.Models;
 using EPiServer.SpecializedProperties;
 using MusicFestival.Template.Models.Blocks;
 

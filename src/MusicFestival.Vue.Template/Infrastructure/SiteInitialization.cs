@@ -1,20 +1,19 @@
-﻿using EPiServer.Framework;
+﻿using EPiServer.ContentApi.Core.Configuration;
+using EPiServer.ContentApi.Core.Serialization;
+using EPiServer.ContentApi.Search;
+using EPiServer.Core;
+using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
-using System.Web.Mvc;
-using System;
-using EPiServer.ContentApi.Infrastructure;
-using EPiServer.ContentApi.Search.Infrastructure;
-using System.Web.Http;
-using Newtonsoft.Json;
-using System.Web;
-using EPiServer.ContentApi.Core;
-using EPiServer.ContentApi.Core.Infrastructure;
-using MusicFestival.Template.Infrastructure.WebApi;
 using EPiServer.Web;
-using MusicFestival.Template.Models;
 using EPiServer.Web.Routing;
-using EPiServer.Core;
+using MusicFestival.Template.Infrastructure.WebApi;
+using MusicFestival.Template.Models;
+using Newtonsoft.Json;
+using System;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
 
 namespace MusicFestival.Template.Infrastructure
 {
@@ -24,12 +23,14 @@ namespace MusicFestival.Template.Infrastructure
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-
-            var contentApiOptions = new ContentApiOptions
+            context.Services.Configure<ContentApiConfiguration>(config =>
             {
-                MultiSiteFilteringEnabled = false
-            };
-            context.InitializeContentApi(contentApiOptions);
+                config.Default()
+                    .SetMinimumRoles(string.Empty)
+                    .SetRequiredRole("Content Api Access")
+                    .SetMultiSiteFilteringEnabled(true)
+                    .SetSiteDefinitionApiEnabled(true);
+            });
 
             // Register the extended content model mapper to be able to provide custom models from content api
             context.Services.Intercept<IContentModelMapper>((locator, defaultModelMapper) =>
@@ -41,9 +42,9 @@ namespace MusicFestival.Template.Infrastructure
                     )
             );
 
-            context.InitializeContentSearchApi(new ContentSearchApiOptions()
+            context.Services.Configure<ContentApiSearchConfiguration>(config =>
             {
-                SearchCacheDuration = TimeSpan.Zero
+                config.Default().SetSearchCacheDuration(TimeSpan.Zero);
             });
 
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.StructureMap()));
@@ -57,7 +58,7 @@ namespace MusicFestival.Template.Infrastructure
                 config.MapHttpAttributeRoutes();
                 config.EnableCors();
             });
-            context.Services.AddTransient<IPropertyModelHandler, BuyTicketBlockPropertyModelHandler>();
+            context.Services.AddTransient<IPropertyModelConverter, BuyTicketBlockPropertyModelHandler>();
         }
 
         public void Initialize(InitializationEngine context)
