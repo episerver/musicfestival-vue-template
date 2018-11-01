@@ -2,35 +2,23 @@
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using System.Web.Mvc;
-using System;
-using EPiServer.ContentApi.Infrastructure;
-using EPiServer.ContentApi.Search.Infrastructure;
-using System.Web.Http;
-using Newtonsoft.Json;
 using System.Web;
-using EPiServer.ContentApi.Core;
-using EPiServer.ContentApi.Core.Infrastructure;
-using MusicFestival.Template.Infrastructure.WebApi;
 using EPiServer.Web;
 using MusicFestival.Template.Models;
 using EPiServer.Web.Routing;
 using EPiServer.Core;
+using EPiServer.ContentApi.Core.Serialization;
+using EPiServer.ContentApi.Cms;
+using EPiServer.ContentApi.Core.Configuration;
 
 namespace MusicFestival.Template.Infrastructure
 {
     [InitializableModule]
-    [ModuleDependency(typeof(ServiceContainerInitialization))]
+    [ModuleDependency(typeof(ServiceContainerInitialization), typeof(ContentApiCmsInitialization))]
     public class SiteInitialization : IConfigurableModule
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-
-            var contentApiOptions = new ContentApiOptions
-            {
-                MultiSiteFilteringEnabled = false
-            };
-            context.InitializeContentApi(contentApiOptions);
-
             // Register the extended content model mapper to be able to provide custom models from content api
             context.Services.Intercept<IContentModelMapper>((locator, defaultModelMapper) =>
                 new ExtendedContentModelMapper(
@@ -41,23 +29,14 @@ namespace MusicFestival.Template.Infrastructure
                     )
             );
 
-            context.InitializeContentSearchApi(new ContentSearchApiOptions()
-            {
-                SearchCacheDuration = TimeSpan.Zero
-            });
-
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.StructureMap()));
+            context.Services.AddTransient<IPropertyModelConverter, BuyTicketBlockPropertyModelConverter>();
 
-            GlobalConfiguration.Configure(config =>
+            // set minimumRoles to empty to allow anonymous calls (for visitors to view site in view mode)
+            context.Services.Configure<ContentApiConfiguration>(config =>
             {
-                config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.LocalOnly;
-                config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings();
-                config.Formatters.XmlFormatter.UseXmlSerializer = true;
-                config.DependencyResolver = new StructureMapResolver(context.StructureMap());
-                config.MapHttpAttributeRoutes();
-                config.EnableCors();
+                config.Default().SetMinimumRoles(string.Empty);
             });
-            context.Services.AddTransient<IPropertyModelHandler, BuyTicketBlockPropertyModelHandler>();
         }
 
         public void Initialize(InitializationEngine context)

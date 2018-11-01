@@ -1,4 +1,4 @@
-﻿using EPiServer.ContentApi.Core;
+﻿using EPiServer.ContentApi.Core.Serialization.Models;
 using EPiServer.SpecializedProperties;
 using MusicFestival.Template.Models.Blocks;
 
@@ -13,7 +13,8 @@ namespace MusicFestival.Template.Infrastructure
         public BuyTicketBlockPropertyModel(PropertyBlock value)
             : base(value)
         {
-            Value = new {
+            Value = new
+            {
                 ((BuyTicketBlock)value.Value).Heading,
                 ((BuyTicketBlock)value.Value).Message
             };

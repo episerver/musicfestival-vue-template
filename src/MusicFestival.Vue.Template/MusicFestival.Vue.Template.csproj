@@ -80,20 +80,11 @@
     <Reference Include="EPiServer.Configuration, Version=11.10.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.CMS.AspNet.11.10.0\lib\net461\EPiServer.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.ContentApi, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.ContentDeliveryApi.1.0.1\lib\net461\EPiServer.ContentApi.dll</HintPath>
+    <Reference Include="EPiServer.ContentApi.Cms, Version=2.1.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.ContentDeliveryApi.Cms.2.1.0\lib\net461\EPiServer.ContentApi.Cms.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.ContentApi.Authorization, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.ContentDeliveryApi.1.0.1\lib\net461\EPiServer.ContentApi.Authorization.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.ContentApi.Authorization.UI, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.ContentDeliveryApi.1.0.1\lib\net461\EPiServer.ContentApi.Authorization.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.ContentApi.Core, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.ContentDeliveryApi.1.0.1\lib\net461\EPiServer.ContentApi.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.ContentApi.Search, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.ContentDeliveryApi.1.0.1\lib\net461\EPiServer.ContentApi.Search.dll</HintPath>
+    <Reference Include="EPiServer.ContentApi.Core, Version=2.1.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.ContentDeliveryApi.Core.2.1.0\lib\net461\EPiServer.ContentApi.Core.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Data, Version=11.10.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Framework.11.10.0\lib\net461\EPiServer.Data.dll</HintPath>
@@ -106,27 +97,6 @@
     </Reference>
     <Reference Include="EPiServer.Events, Version=11.10.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Framework.11.10.0\lib\net461\EPiServer.Events.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.Find, Version=12.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.12.7.1\lib\net461\EPiServer.Find.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.Find.Blocks, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.12.7.1\lib\net461\EPiServer.Find.Blocks.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.Find.Cms, Version=12.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.12.7.1\lib\net461\EPiServer.Find.Cms.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.Find.Framework, Version=12.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Framework.12.7.1\lib\net461\EPiServer.Find.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.Find.Optimizations, Version=12.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.12.7.1\lib\net461\EPiServer.Find.Optimizations.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.Find.Statistics, Version=12.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.12.7.1\lib\net461\EPiServer.Find.Statistics.dll</HintPath>
-    </Reference>
-    <Reference Include="EPiServer.Find.UI, Version=12.7.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.12.7.1\lib\net461\EPiServer.Find.UI.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Framework, Version=11.10.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Framework.11.10.0\lib\net461\EPiServer.Framework.dll</HintPath>
@@ -232,9 +202,6 @@
     <Reference Include="StructureMap, Version=4.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\StructureMap.4.5.2\lib\net45\StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap.Net4, Version=3.1.9.463, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\structuremap-signed.3.1.9.463\lib\net40\StructureMap.Net4.dll</HintPath>
-    </Reference>
     <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\structuremap.web.4.0.0.315\lib\net40\StructureMap.Web.dll</HintPath>
     </Reference>
@@ -305,9 +272,6 @@
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.OData, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.OData.6.0.0\lib\net45\System.Web.OData.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
@@ -343,8 +307,8 @@
     <Compile Include="Controllers\DefaultPageController.cs" />
     <Compile Include="Controllers\PreviewController.cs" />
     <Compile Include="Infrastructure\BuyTicketBlockPropertyModel.cs" />
-    <Compile Include="Infrastructure\BuyTicketBlockPropertyModelHandler.cs" />
     <Compile Include="Infrastructure\ContentDeliveryExtendedRouting\ChildrenPartialRouter.cs" />
+    <Compile Include="Infrastructure\BuyTicketBlockPropertyModelConverter.cs" />
     <Compile Include="Infrastructure\ContentDeliveryExtendedRouting\PropertyPartialRouter.cs" />
     <Compile Include="Infrastructure\ContentDeliveryExtendedRouting\PropertyResolveFilter.cs" />
     <Compile Include="Infrastructure\ContentDeliveryExtendedRouting\RoutingConstants.cs" />
@@ -365,8 +329,6 @@
     <Compile Include="Infrastructure\Owin\Startup.cs" />
     <Compile Include="Infrastructure\SiteInitialization.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
-    <Compile Include="Infrastructure\WebApi\StructureMapDependencyScope.cs" />
-    <Compile Include="Infrastructure\WebApi\StructureMapResolver.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\SiteImageUrl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -388,10 +350,8 @@
     <Content Include="Assets\Scripts\Mixins\epiDataModelMixin.js" />
     <Content Include="Assets\Scripts\router.js" />
     <Content Include="Content\editor.css" />
-    <Content Include="modules\_protected\EPiServer.ContentDeliveryApi\ContentApiUserSettings.ascx" />
     <Content Include="postcss.config.js" />
     <Content Include="webpack.config.js" />
-    <EmbeddedResource Include="lang\EPiServer.ContentApi.Authorization.UI_en.xml" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -456,13 +416,12 @@
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\EPiServer.Cms.TinyMce.zip" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\web.config" />
     <Content Include="modules\_protected\EPiServer.Packaging.UI\EPiServer.Packaging.UI.zip" />
-    <Content Include="modules\_protected\EPiServer.ContentDeliveryApi\module.config" />
     <Content Include="modules\_protected\repository.config" />
     <Content Include="Infrastructure\ContentDeliveryExtendedRouting\Readme.md" />
-    <Content Include="modules\_protected\Shell\web.config" />
     <Content Include="modules\_protected\Shell\Shell.zip" />
-    <Content Include="modules\_protected\CMS\web.config" />
     <Content Include="modules\_protected\CMS\CMS.zip" />
+    <Content Include="modules\_protected\Shell\web.config" />
+    <Content Include="modules\_protected\CMS\web.config" />
     <None Include="Properties\PublishProfiles\epiheadlessui - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\epiheadlessui - Web Deploy.pubxml" />
     <Content Include="Views\DefaultPage\Index.cshtml" />

@@ -2,13 +2,12 @@
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using EPiServer.ContentApi.Authorization;
 using EPiServer.Cms.UI.AspNetIdentity;
 using Microsoft.AspNet.Identity.Owin;
 using EPiServer.Web.Routing;
 using EPiServer.Core;
 using Microsoft.AspNet.Identity;
-using EPiServer.ContentApi;
+using EPiServer.ContentApi.Core.Internal;
 
 [assembly: OwinStartup(typeof(MusicFestival.Template.Infrastructure.Owin.Startup))]
 namespace MusicFestival.Template.Infrastructure.Owin
@@ -40,7 +39,7 @@ namespace MusicFestival.Template.Infrastructure.Owin
                         regenerateIdentity: (manager, user) => manager.GenerateUserIdentityAsync(user)),
                     OnApplyRedirect = (context =>
                     {
-                        if (!ContentApiHelper.IsContentApiRequest(context.Request.Uri))
+                        if (!IsContentApiRequest(context.Request.Uri))
                         {
                             context.Response.Redirect(context.RedirectUri);
                         }
@@ -50,11 +49,21 @@ namespace MusicFestival.Template.Infrastructure.Owin
             });
 
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+        }
 
-            app.UseContentApiIdentityOAuthAuthorization<ApplicationUserManager<ApplicationUser>, ApplicationUser>(new ContentApiOAuthOptions()
+        private bool IsContentApiRequest(Uri requestUri)
+        {
+            if (requestUri == null)
+                return false;
+
+            if (requestUri.IsAbsoluteUri)
             {
-                RequireSsl = false,
-            });
+                return requestUri.PathAndQuery.StartsWith("/" + RouteConstants.BaseContentApiRoute);
+            }
+            else
+            {
+                return requestUri.ToString().StartsWith("/" + RouteConstants.BaseContentApiRoute);
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using EPiServer.Cms.Shell;
 using EPiServer.ContentApi.Core;
+using EPiServer.ContentApi.Core.Serialization;
+using EPiServer.ContentApi.Core.Serialization.Models;
 using EPiServer.Core;
 using EPiServer.Editor;
 using EPiServer.ServiceLocation;
@@ -33,7 +35,7 @@ namespace MusicFestival.Template.Models
             _versionRepository = versionRepository;
         }
 
-        public List<IPropertyModelHandler> PropertyModelHandlers { get; }
+        public IEnumerable<IPropertyModelConverter> PropertyModelConverters { get; }
 
         /// <summary>
         /// Maps an instance of IContent to ContentApiModel and additionally add info about existing languages

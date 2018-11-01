@@ -15,7 +15,7 @@ const call = (method, url, baseURL, parameters, headers) => {
     });
 };
 
-const callContentAPI = (method, url, parameters) => call(method, url, '/api/episerver/v1.0/', parameters);
+const callContentAPI = (method, url, parameters) => call(method, url, '/api/episerver/v2.0/', parameters);
 const callRegularRouting = (method, url, parameters) => call(method, url, '/', parameters, { Accept: 'application/json'});
 
 export default {
