@@ -1,12 +1,17 @@
 # MusicFestival Vue.js Templates
 
-This project uses npm 6+ and Visual Studio 2015+.
-
 This sample site demonstrates one approach to render Episerver content in a client side framework that is using client side routing for navigation with a working On Page Edit (OPE) mode in the Episerver UI.
 
 This particular solution uses Vue.js but most of the techniques are framework agnostic and can be used with any other framework, such as React or Angular.
 
 Content is fetched from Episerver using the Content Delivery API: https://world.episerver.com/documentation/developer-guides/CMS/Content/content-delivery-api/
+
+## Prerequisites
+
+This project uses:
+* npm 6+
+* Visual Studio 2015+
+* SQL Server 2016 Express LocalDB ([download here](https://www.microsoft.com/en-us/sql-server/sql-server-downloads))
 
 ## Setup and Run
 
