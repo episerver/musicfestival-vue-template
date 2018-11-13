@@ -49,8 +49,6 @@ namespace MusicFestival.App_Code
 
             AddRole("WebAdmins", AccessLevel.FullAccess, securityRepository);
             AddRole("WebEditors", AccessLevel.FullAccess ^ AccessLevel.Administer, securityRepository);
-            // required role to be able to get content with content api
-            AddRole("Content Api Access", AccessLevel.Read, securityRepository);
 
             AddUser("cmsadmin", "Administrator Administrator", password, new[] { "WebEditors", "WebAdmins" });
             AddUser("alfred", "Alfred Andersson", password, new[] { "WebEditors", "WebAdmins" });

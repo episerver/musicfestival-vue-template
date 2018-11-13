@@ -62,12 +62,6 @@ export default {
                     // group them by first letter of artist name and store in data.artists object
                     this.artists = _.groupBy(ordered, artist => artist.artistName.substring(0, 1));
                     return success;
-                }, error => {
-                    // There were no children. Can happen when the page is new and has no artists.
-                    if (error.response.status === 404) {
-                        this.artists = [];
-                    }
-                    return error;
                 });
         }
     },
