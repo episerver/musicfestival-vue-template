@@ -12,8 +12,8 @@
 -->
 
 <template>
-    <div v-if="modelLoaded">
-        <component :is="getComponentTypeForPage(model)" :url="url" :model="model"></component>
+    <div v-if="$store.state.modelLoaded">
+        <component :is="getComponentTypeForPage($store.state.model)" :url="url" :model="model"></component>
     </div>
 </template>
 

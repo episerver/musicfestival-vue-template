@@ -8,6 +8,7 @@ import Vue from 'vue';
 import '@/Styles/Main.less';
 
 import router from '@/Scripts/router.js';
+import store from '@/Scripts/store';
 
 // generate svg sprite from all files in /Assets/Images/SVG
 const files = require.context('@/Images/SVG', false, /.*\.svg$/);
@@ -57,6 +58,7 @@ Vue.prototype.$app = appContext;
 /* eslint-disable-next-line no-unused-vars */
 let App = new Vue({
     el: '#App',
+    store,
     router,
     // This data is only to convert `epiContext` and `appContext` to reactive
     // properties, which is referenced through `this.$epi` on all components.
