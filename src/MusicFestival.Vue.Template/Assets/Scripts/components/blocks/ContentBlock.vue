@@ -13,7 +13,7 @@
             </div>
             <div class="Grid-cell" :class="{'u-md-size1of2': model.image}">
                 <h2 v-epi-edit="'Title'">{{model.title}}</h2>
-                <span v-epi-edit="'Content'" v-html="model.content"></span>
+                <div v-epi-edit="'Content'" v-html="model.content"></div>
                 <epi-property v-if="!model.image" property-name="image"></epi-property>
             </div>
         </div>
