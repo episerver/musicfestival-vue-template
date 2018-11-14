@@ -6,12 +6,12 @@
 
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from '@/Scripts/store';
 
 import PageComponentSelector from '@/Scripts/components/PageComponentSelector.vue';
 
 Vue.use(Router);
-
-export default new Router({
+const router = new Router({
     // Use the HTML HistoryAPI so the # isn't needed in the URL, and
     // Vue routing will work even when going directly to a URL.
     mode: 'history',
@@ -25,3 +25,10 @@ export default new Router({
         }
     ]
 });
+
+router.beforeEach((to, from, next) => {
+    store.dispatch('updateModelByFriendlyUrl', to.fullPath);
+    next();
+});
+
+export default router;

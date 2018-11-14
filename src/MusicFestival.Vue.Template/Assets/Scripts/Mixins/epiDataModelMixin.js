@@ -57,7 +57,7 @@ export default {
                 vm.$forceUpdate();
                 return response;
             }).then(response => {
-                this.$store.commit('UPDATE_MODEL', response.data);
+                // this.$store.commit('UPDATE_MODEL', response.data);
             });
         },
 
