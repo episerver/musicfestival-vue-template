@@ -54,7 +54,7 @@ export default {
         BlockComponentSelector
     },
     created() {
-        this.updateModelByContentLink(this.contentLink);
+        this.$store.dispatch('updateModelByContentLink', this.contentLink);
     }
 };
 </script>

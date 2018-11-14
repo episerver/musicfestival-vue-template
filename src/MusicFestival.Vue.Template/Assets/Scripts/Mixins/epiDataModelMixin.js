@@ -1,4 +1,3 @@
-import api from '@/Scripts/api/api.js';
 import { mapState } from 'vuex';
 
 export default {
@@ -7,64 +6,12 @@ export default {
     },
 
     computed: mapState({
-        isEditable: state => state.context.isEditable
+        isEditable: state => state.context.isEditable,
+        model: 'model',
+        modelLoaded: 'modelLoaded'
     }),
 
-    data: function () {
-        return {
-            modelLoaded: false,
-            model: {}
-        };
-    },
-
     methods: {
-        updateModelByFriendlyUrl: function (friendlyUrl) {
-            /**
-             * When updating a model by friendly URL we assume that the friendly URL
-             * contains every querystring parameter that we might need on the server.
-             */
-
-            return this._updateModelAsync(api.getContentByFriendlyUrl, friendlyUrl);
-        },
-
-        updateModelByContentLink: function (contentLink) {
-            /**
-             * Updating a model by content link is done when something is being edited and when viewing a block.
-             * In order to be sure that we get the correct model, we need to keep any previously
-             * existing query string from the friendly URL.
-             *
-             * See the implementation of ExtendedContentModelMapper.GetContextMode for additional details.
-             */
-
-            let queryString = null;
-            if (this.model && this.model.url) {
-                queryString = this.model.url.split('?')[1];
-            }
-            let contentLinkUrl = queryString ? contentLink + '?' + queryString : contentLink;
-            return this._updateModelAsync(api.getContentByContentLink, contentLinkUrl);
-        },
-
-        _updateModelAsync: function (apiMethod, args) {
-            /**
-             * Updates the model by calling the ContentDeliveryAPI.
-             */
-
-            let vm = this;
-
-            const parameters = {
-                expand: '*'
-            };
-
-            return apiMethod(args, parameters).then((response) => {
-                let data = response.data;
-                vm.model = data;
-                vm.modelLoaded = true;
-                vm.$forceUpdate();
-                return response;
-            }).then(response => {
-                // this.$store.commit('UPDATE_MODEL', response.data);
-            });
-        },
 
         _registerContentSavedEvent(isEditable) {
             /**
@@ -76,9 +23,7 @@ export default {
 
             if (isEditable) {
                 window.epi.subscribe('beta/contentSaved', message => {
-                    this.updateModelByContentLink(message.contentLink).then(() => {
-                        this.$store.dispatch('updateModelByContentLink', message.contentLink);
-                    });
+                    this.$store.dispatch('updateModelByContentLink', message.contentLink);
                 });
             }
         }

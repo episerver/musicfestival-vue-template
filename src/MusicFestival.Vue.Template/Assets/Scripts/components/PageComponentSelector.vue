@@ -24,16 +24,7 @@ import getComponentTypeForContent from '@/Scripts/api/getComponentTypeForContent
 export default {
     mixins: [EpiDataModelMixin],
     props: ['url'],
-    watch: {
-        url: 'updateData'
-    },
-    created() {
-        this.updateData();
-    },
     methods: {
-        updateData() {
-            this.updateModelByFriendlyUrl(this.$props.url);
-        },
         getComponentTypeForPage(model) {
             // this.$options.components will contain all globally registered components from main.js
             return getComponentTypeForContent(model, this.$options.components);
