@@ -12,7 +12,7 @@
 -->
 
 <template>
-    <div v-if="$store.state.modelLoaded">
+    <div v-if="$store.state.modelLoaded && modelLoaded">
         <component :is="getComponentTypeForPage($store.state.model)" :url="url" :model="model"></component>
     </div>
 </template>
