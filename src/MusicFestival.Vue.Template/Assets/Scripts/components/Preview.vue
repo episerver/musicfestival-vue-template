@@ -46,10 +46,15 @@
 <script>
 import EpiDataModelMixin from '@/Scripts/mixins/epiDataModelMixin';
 import BlockComponentSelector from '@/Scripts/components/BlockComponentSelector.vue';
+import { mapState } from 'vuex';
 
 export default {
     props: ['contentLink'],
     mixins: [EpiDataModelMixin],
+    computed: mapState([
+        'model',
+        'modelLoaded'
+    ]),
     components: {
         BlockComponentSelector
     },

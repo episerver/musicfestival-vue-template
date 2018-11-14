@@ -12,18 +12,23 @@
 -->
 
 <template>
-    <div v-if="$store.state.modelLoaded && modelLoaded">
-        <component :is="getComponentTypeForPage($store.state.model)" :url="url" :model="model"></component>
+    <div v-if="modelLoaded">
+        <component :is="getComponentTypeForPage(model)" :url="url" :model="model"></component>
     </div>
 </template>
 
 <script>
 import EpiDataModelMixin from '@/Scripts/mixins/epiDataModelMixin';
 import getComponentTypeForContent from '@/Scripts/api/getComponentTypeForContent';
+import { mapState } from 'vuex';
 
 export default {
     mixins: [EpiDataModelMixin],
     props: ['url'],
+    computed: mapState([
+        'model',
+        'modelLoaded'
+    ]),
     methods: {
         getComponentTypeForPage(model) {
             // this.$options.components will contain all globally registered components from main.js

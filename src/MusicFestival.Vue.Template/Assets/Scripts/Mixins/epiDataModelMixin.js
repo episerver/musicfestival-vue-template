@@ -6,9 +6,7 @@ export default {
     },
 
     computed: mapState({
-        isEditable: state => state.context.isEditable,
-        model: 'model',
-        modelLoaded: 'modelLoaded'
+        isEditable: state => state.context.isEditable
     }),
 
     methods: {
