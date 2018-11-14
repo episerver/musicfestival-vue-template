@@ -21,6 +21,21 @@ const context = {
     isEditable: false
 };
 
+const registerContentSavedEvent = (isEditable) => {
+    /**
+     * If we enter an editable context we want to enable On-Page Editing
+     * and therefore start listening to the "beta/contentSaved" event to
+     * be notified when content has been edited. We then update the
+     * model and trigger an update of the components.
+     */
+
+    if (isEditable) {
+        window.epi.subscribe('beta/contentSaved', message => {
+            store.dispatch('updateModelByContentLink', message.contentLink);
+        });
+    }
+};
+
 // Listen to the `beta/epiReady` event to update the `context` property.
 window.addEventListener('load', () => {
     // Expect `epi` to be there after the `load` event. If it's not then we're
@@ -35,6 +50,7 @@ window.addEventListener('load', () => {
         context.isEditable = window.epi.beta.isEditable;
 
         store.commit('UPDATE_CONTEXT', context);
+        registerContentSavedEvent(context.isEditable);
     }
 
     // Check for beta and that ready is an actual true value (not just truthy).

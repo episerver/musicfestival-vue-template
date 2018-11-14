@@ -18,12 +18,10 @@
 </template>
 
 <script>
-import EpiDataModelMixin from '@/Scripts/mixins/epiDataModelMixin';
 import getComponentTypeForContent from '@/Scripts/api/getComponentTypeForContent';
 import { mapState } from 'vuex';
 
 export default {
-    mixins: [EpiDataModelMixin],
     props: ['url'],
     computed: mapState([
         'model',
