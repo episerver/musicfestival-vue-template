@@ -1,9 +1,14 @@
 import api from '@/Scripts/api/api.js';
+import { mapState } from 'vuex';
 
 export default {
     watch: {
-        '$epi.isEditable': '_registerContentSavedEvent'
+        isEditable: '_registerContentSavedEvent'
     },
+
+    computed: mapState({
+        isEditable: state => state.context.isEditable
+    }),
 
     data: function () {
         return {
@@ -71,7 +76,9 @@ export default {
 
             if (isEditable) {
                 window.epi.subscribe('beta/contentSaved', message => {
-                    this.updateModelByContentLink(message.contentLink);
+                    this.updateModelByContentLink(message.contentLink).then(() => {
+                        this.$store.dispatch('updateModelByContentLink', message.contentLink);
+                    });
                 });
             }
         }

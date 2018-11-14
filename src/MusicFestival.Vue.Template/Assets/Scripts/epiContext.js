@@ -14,6 +14,7 @@
  * finished loading. See the event handler at the bottom of the page.
  */
 import Vue from 'vue';
+import store from '@/Scripts/store';
 
 const context = {
     inEditMode: false,
@@ -32,6 +33,8 @@ window.addEventListener('load', () => {
         // The event only has `isEditable`, but the epi object has both.
         context.inEditMode = window.epi.beta.inEditMode;
         context.isEditable = window.epi.beta.isEditable;
+
+        store.commit('UPDATE_CONTEXT', context);
     }
 
     // Check for beta and that ready is an actual true value (not just truthy).
