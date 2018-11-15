@@ -1,11 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '@/Scripts/api/api.js';
+import * as types from './mutation-types.js';
 Vue.use(Vuex);
-
-const UPDATE_MODEL = 'UPDATE_MODEL';
-const UPDATE_CONTEXT = 'UPDATE_CONTEXT';
-const UPDATE_URL = 'UPDATE_URL';
 
 const parameters = {
     expand: '*'
@@ -22,14 +19,14 @@ const store = new Vuex.Store({
         url: ''
     },
     mutations: {
-        [UPDATE_MODEL](state, newModel) {
+        [types.UPDATE_MODEL](state, newModel) {
             state.model = newModel;
             state.modelLoaded = true;
         },
-        [UPDATE_CONTEXT](state, newContext) {
+        [types.UPDATE_CONTEXT](state, newContext) {
             state.context = newContext;
         },
-        [UPDATE_URL](state, newUrl) {
+        [types.UPDATE_URL](state, newUrl) {
             state.url = newUrl;
         }
     },
@@ -39,7 +36,7 @@ const store = new Vuex.Store({
              * When the url is updated we will also update the model.
              */
 
-            commit(UPDATE_URL, url);
+            commit(types.UPDATE_URL, url);
             return dispatch('updateModelByFriendlyUrl', url);
         },
         updateModelByFriendlyUrl({commit}, friendlyUrl) {
@@ -49,7 +46,7 @@ const store = new Vuex.Store({
              */
 
             return api.getContentByFriendlyUrl(friendlyUrl, parameters).then(response => {
-                commit(UPDATE_MODEL, response.data);
+                commit(types.UPDATE_MODEL, response.data);
             });
         },
         updateModelByContentLink({commit, state}, contentLink) {
@@ -67,7 +64,7 @@ const store = new Vuex.Store({
             }
             let contentLinkUrl = queryString ? contentLink + '?' + queryString : contentLink;
             return api.getContentByContentLink(contentLinkUrl, parameters).then(response => {
-                commit(UPDATE_MODEL, response.data);
+                commit(types.UPDATE_MODEL, response.data);
             });
         }
     }

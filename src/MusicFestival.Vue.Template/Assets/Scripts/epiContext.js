@@ -15,6 +15,7 @@
  */
 import Vue from 'vue';
 import store from '@/Scripts/store';
+import { UPDATE_CONTEXT } from './store/mutation-types';
 
 const context = {
     inEditMode: false,
@@ -49,7 +50,7 @@ window.addEventListener('load', () => {
         context.inEditMode = window.epi.beta.inEditMode;
         context.isEditable = window.epi.beta.isEditable;
 
-        store.commit('UPDATE_CONTEXT', context);
+        store.commit(UPDATE_CONTEXT, context);
         registerContentSavedEvent(context.isEditable);
     }
 
