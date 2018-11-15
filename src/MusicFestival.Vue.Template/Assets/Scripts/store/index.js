@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 const UPDATE_MODEL = 'UPDATE_MODEL';
 const UPDATE_CONTEXT = 'UPDATE_CONTEXT';
+const UPDATE_URL = 'UPDATE_URL';
 
 const parameters = {
     expand: '*'
@@ -17,7 +18,8 @@ const store = new Vuex.Store({
         context: {
             inEditMode: false,
             isEditable: false
-        }
+        },
+        url: ''
     },
     mutations: {
         [UPDATE_MODEL](state, newModel) {
@@ -26,16 +28,27 @@ const store = new Vuex.Store({
         },
         [UPDATE_CONTEXT](state, newContext) {
             state.context = newContext;
+        },
+        [UPDATE_URL](state, newUrl) {
+            state.url = newUrl;
         }
     },
     actions: {
+        updateUrl({commit, dispatch}, url) {
+            /**
+             * When the url is updated we will also update the model.
+             */
+
+            commit(UPDATE_URL, url);
+            return dispatch('updateModelByFriendlyUrl', url);
+        },
         updateModelByFriendlyUrl({commit}, friendlyUrl) {
             /**
              * When updating a model by friendly URL we assume that the friendly URL
              * contains every querystring parameter that we might need on the server.
              */
 
-            api.getContentByFriendlyUrl(friendlyUrl, parameters).then(response => {
+            return api.getContentByFriendlyUrl(friendlyUrl, parameters).then(response => {
                 commit(UPDATE_MODEL, response.data);
             });
         },
@@ -53,7 +66,7 @@ const store = new Vuex.Store({
                 queryString = state.model.url.split('?')[1];
             }
             let contentLinkUrl = queryString ? contentLink + '?' + queryString : contentLink;
-            api.getContentByContentLink(contentLinkUrl, parameters).then(response => {
+            return api.getContentByContentLink(contentLinkUrl, parameters).then(response => {
                 commit(UPDATE_MODEL, response.data);
             });
         }

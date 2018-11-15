@@ -13,7 +13,7 @@
 
 <template>
     <div v-if="modelLoaded">
-        <component :is="getComponentTypeForPage(model)" :url="url" :model="model"></component>
+        <component :is="getComponentTypeForPage(model)" :model="model"></component>
     </div>
 </template>
 
@@ -22,7 +22,6 @@ import getComponentTypeForContent from '@/Scripts/api/getComponentTypeForContent
 import { mapState } from 'vuex';
 
 export default {
-    props: ['url'],
     computed: mapState([
         'model',
         'modelLoaded'

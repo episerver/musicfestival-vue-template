@@ -19,15 +19,13 @@ const router = new Router({
     routes: [
         {
             path: '*',
-            component: PageComponentSelector,
-            // This will merge route data with the component $props, so components don't need to know about routing.
-            props: (route) => ({ url: route.fullPath })
+            component: PageComponentSelector
         }
     ]
 });
 
 router.beforeEach((to, from, next) => {
-    store.dispatch('updateModelByFriendlyUrl', to.fullPath);
+    store.dispatch('updateUrl', to.fullPath);
     next();
 });
 
