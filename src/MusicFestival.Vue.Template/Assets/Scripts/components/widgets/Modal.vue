@@ -4,7 +4,7 @@
 -->
 
 <template>
-    <transition name="modal" v-if="$app.modalShowing">
+    <transition name="modal" v-if="modalShowing">
         <div class="modal-mask">
             <div class="modal-wrapper">
                 <div class="modal-container">
@@ -29,17 +29,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { HIDE_MODAL } from '@/Scripts/store/mutation-types.js';
+
 export default {
+    computed: mapState({
+        modalShowing: state => state.appContext.modalShowing
+    }),
     methods: {
         closeModal() {
-            this.$app.modalShowing = false;
+            this.$store.commit(HIDE_MODAL);
             this.$emit('close');
         }
     }
 };
 </script>
-
-
 
 <style lang="less" scoped>
     @import '../../../Styles/Common/variables.less';

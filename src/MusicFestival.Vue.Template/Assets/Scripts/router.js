@@ -7,6 +7,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from '@/Scripts/store';
+import { updateUrl } from '@/Scripts/store/action-types.js';
 
 import PageComponentSelector from '@/Scripts/components/PageComponentSelector.vue';
 
@@ -25,7 +26,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-    store.dispatch('updateUrl', to.fullPath);
+    store.dispatch(updateUrl, to.fullPath);
     next();
 });
 

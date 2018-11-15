@@ -23,16 +23,15 @@
 
 <script>
 import EpiProperty from '@/Scripts/components/EpiProperty.vue';
+import { mapState } from 'vuex';
 
 export default {
     props: ['title', 'subtitle', 'heroimage'],
     components: {
         EpiProperty
     },
-    computed: {
-        epiDisableEditing() {
-            return this.$app.modalShowing;
-        }
-    },
+    computed: mapState({
+        epiDisableEditing: state => state.appContext.modalShowing
+    }),
 };
 </script>

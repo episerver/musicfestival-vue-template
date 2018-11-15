@@ -13,14 +13,10 @@
  * These values are `false` by default and will be updated when the page has
  * finished loading. See the event handler at the bottom of the page.
  */
-import Vue from 'vue';
-import store from '@/Scripts/store';
-import { UPDATE_CONTEXT } from './store/mutation-types';
 
-const context = {
-    inEditMode: false,
-    isEditable: false
-};
+import store from '@/Scripts/store';
+import { UPDATE_CONTEXT } from '@/Scripts/store/mutation-types';
+import { updateModelByContentLink } from '@/Scripts/store/action-types.js';
 
 const registerContentSavedEvent = (isEditable) => {
     /**
@@ -32,7 +28,7 @@ const registerContentSavedEvent = (isEditable) => {
 
     if (isEditable) {
         window.epi.subscribe('beta/contentSaved', message => {
-            store.dispatch('updateModelByContentLink', message.contentLink);
+            store.dispatch(updateModelByContentLink, message.contentLink);
         });
     }
 };
@@ -47,8 +43,10 @@ window.addEventListener('load', () => {
 
     function setContext() {
         // The event only has `isEditable`, but the epi object has both.
-        context.inEditMode = window.epi.beta.inEditMode;
-        context.isEditable = window.epi.beta.isEditable;
+        const context = {
+            inEditMode: window.epi.beta.inEditMode,
+            isEditable: window.epi.beta.isEditable
+        };
 
         store.commit(UPDATE_CONTEXT, context);
         registerContentSavedEvent(context.isEditable);
@@ -65,10 +63,3 @@ window.addEventListener('load', () => {
         window.epi.subscribe('beta/epiReady', () => setContext());
     }
 });
-
-// Make the context available to all Vue components.
-// > "$ is a convention Vue uses for properties that are available to all instances."
-// https://vuejs.org/v2/cookbook/adding-instance-properties.html#The-Importance-of-Scoping-Instance-Properties
-Vue.prototype.$epi = context;
-
-export default context;

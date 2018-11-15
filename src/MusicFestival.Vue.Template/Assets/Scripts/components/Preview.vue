@@ -46,18 +46,19 @@
 <script>
 import BlockComponentSelector from '@/Scripts/components/BlockComponentSelector.vue';
 import { mapState } from 'vuex';
+import { updateModelByContentLink } from '@/Scripts/store/action-types.js';
 
 export default {
     props: ['contentLink'],
-    computed: mapState([
-        'model',
-        'modelLoaded'
-    ]),
+    computed: mapState({
+        model: state => state.content.model,
+        modelLoaded: state => state.content.modelLoaded
+    }),
     components: {
         BlockComponentSelector
     },
     created() {
-        this.$store.dispatch('updateModelByContentLink', this.contentLink);
+        this.$store.dispatch(updateModelByContentLink, this.contentLink);
     }
 };
 </script>

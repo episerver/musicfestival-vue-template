@@ -22,10 +22,10 @@ import getComponentTypeForContent from '@/Scripts/api/getComponentTypeForContent
 import { mapState } from 'vuex';
 
 export default {
-    computed: mapState([
-        'model',
-        'modelLoaded'
-    ]),
+    computed: mapState({
+        model: state => state.content.model,
+        modelLoaded: state => state.content.modelLoaded
+    }),
     methods: {
         getComponentTypeForPage(model) {
             // this.$options.components will contain all globally registered components from main.js

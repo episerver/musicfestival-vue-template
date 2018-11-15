@@ -6,12 +6,17 @@
 -->
 
 <template>
-    <button v-if="$epi.isEditable" v-epi-edit="propertyName" type="button">Edit property: {{propertyName}}</button>
+    <button v-if="isEditable" v-epi-edit="propertyName" type="button">Edit property: {{propertyName}}</button>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-    props: ['propertyName']
+    props: ['propertyName'],
+    computed: mapState({
+        isEditable: state => state.epiContext.isEditable
+    })
 };
 </script>
 

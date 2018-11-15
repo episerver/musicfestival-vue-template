@@ -15,6 +15,8 @@
  * Usage can be found on most Vue components, such as ArtistDetailsPage.vue.
  */
 
+import store from '@/Scripts/store';
+
 function removeEditAttributes(el) {
     el.removeAttribute('data-epi-property-name');
     el.removeAttribute('data-epi-property-render');
@@ -40,7 +42,7 @@ function setEditAttributes(el, binding) {
 }
 
 function toggleEditAttributes(el, binding, vnode) {
-    const siteIsEditable = vnode.context.$epi.isEditable;
+    const siteIsEditable = store.state.epiContext.isEditable;
     const componentIsEditable = !vnode.context.epiDisableEditing;
 
     if (siteIsEditable && componentIsEditable) {

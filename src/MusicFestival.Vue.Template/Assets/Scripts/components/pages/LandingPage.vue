@@ -47,6 +47,7 @@ import LanguageSelector from '@/Scripts/components/widgets/LanguageSelector.vue'
 import EpiLink from '@/Scripts/components/widgets/EpiLink.vue';
 import Modal from '@/Scripts/components/widgets/Modal.vue';
 import BuyTicketBlock from '@/Scripts/components/blocks/BuyTicketBlock.vue';
+import { SHOW_MODAL } from '@/Scripts/store/mutation-types.js';
 
 export default {
     components: {
@@ -60,7 +61,7 @@ export default {
     props: ['model'],
     methods: {
         showModal() {
-            this.$app.modalShowing = true;
+            this.$store.commit(SHOW_MODAL);
         }
     }
 };

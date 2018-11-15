@@ -5,14 +5,19 @@
 -->
 
 <template>
-    <router-link :class="{ 'edit-mode': $epi.inEditMode }" :to="url">
+    <router-link :class="{ 'edit-mode': inEditMode }" :to="url">
         <slot></slot>
     </router-link>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-    props: ['url']
+    props: ['url'],
+    computed: mapState({
+        inEditMode: state => state.epiContext.inEditMode
+    })
 };
 </script>
 

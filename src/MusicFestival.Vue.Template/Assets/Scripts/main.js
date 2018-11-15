@@ -9,6 +9,7 @@ import '@/Styles/Main.less';
 
 import router from '@/Scripts/router.js';
 import store from '@/Scripts/store';
+import '@/Scripts/epiContext';
 
 // generate svg sprite from all files in /Assets/Images/SVG
 const files = require.context('@/Images/SVG', false, /.*\.svg$/);
@@ -16,7 +17,6 @@ files.keys().forEach(files);
 
 // Episerver helpers
 import EpiEdit from '@/Scripts/directives/epiEdit';
-import epiContext from '@/Scripts/epiContext';
 
 // Blocks
 import BuyTicketBlock from '@/Scripts/components/blocks/BuyTicketBlock.vue';
@@ -49,21 +49,9 @@ Vue.component('LandingPage', LandingPage);
 Vue.component('Preview', Preview);
 Vue.component('DefaultPage', DefaultPage);
 
-const appContext = {
-    modalShowing: false
-};
-
-Vue.prototype.$app = appContext;
-
 /* eslint-disable-next-line no-unused-vars */
 let App = new Vue({
     el: '#App',
     store,
-    router,
-    // This data is only to convert `epiContext` and `appContext` to reactive
-    // properties, which is referenced through `this.$epi` on all components.
-    data: {
-        epiContext,
-        appContext
-    }
+    router
 });
