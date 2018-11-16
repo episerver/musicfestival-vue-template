@@ -9,6 +9,10 @@ import '@/Styles/Main.less';
 
 import router from '@/Scripts/router.js';
 import store from '@/Scripts/store';
+
+// epiContext does not export anything but registers some event handlers that
+// are required for the site to work.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Import_a_module_for_its_side_effects_only
 import '@/Scripts/epiContext';
 
 // generate svg sprite from all files in /Assets/Images/SVG
@@ -17,6 +21,7 @@ files.keys().forEach(files);
 
 // Episerver helpers
 import EpiEdit from '@/Scripts/directives/epiEdit';
+Vue.directive('epi-edit', EpiEdit);
 
 // Blocks
 import BuyTicketBlock from '@/Scripts/components/blocks/BuyTicketBlock.vue';
@@ -31,9 +36,6 @@ import LandingPage from '@/Scripts/components/pages/LandingPage.vue';
 // Views
 import Preview from '@/Scripts/components/Preview.vue';
 import DefaultPage from '@/Scripts/components/DefaultPage.vue';
-
-// Episerver helpers
-Vue.directive('epi-edit', EpiEdit);
 
 // Blocks
 Vue.component('BuyTicketBlock', BuyTicketBlock);

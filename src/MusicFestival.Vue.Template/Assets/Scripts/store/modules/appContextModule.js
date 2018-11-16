@@ -1,3 +1,8 @@
+/**
+ * The module responsible for handling app-wide context state that is
+ * interesting for several components that otherwise doesn't share state.
+ */
+
 import { SHOW_MODAL, HIDE_MODAL } from '../mutation-types.js';
 
 const state = {

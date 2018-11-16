@@ -1,3 +1,10 @@
+/**
+ * The module that is responsible for handling the state of the current content
+ * that is being either viewed or edited. This module will handle talking to
+ * the API when the model needs to be updated when navigating or editing the
+ * site.
+ */
+
 import api from '@/Scripts/api/api.js';
 import { UPDATE_MODEL } from '../mutation-types.js';
 import { updateModelByFriendlyUrl, updateModelByContentLink } from '../action-types.js';

@@ -1,8 +1,18 @@
+/**
+ * The main vuex store. This holds the state of the URL and makes sure that
+ * when the URL is updated, the model gets updated too.
+ */
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+// the module handling model state
 import content from './modules/contentModule.js';
+
+// the module handling episerver specific state
 import epiContext from './modules/epiContextModule.js';
+
+// the module handling app specific state
 import appContext from './modules/appContextModule.js';
 
 import { UPDATE_URL } from './mutation-types.js';
@@ -27,7 +37,8 @@ const store = new Vuex.Store({
     actions: {
         [updateUrl]({commit, dispatch}, url) {
             /**
-             * When the url is updated we will also update the model.
+             * When the url is updated we will also update the model. This is
+             * as an action because updating the model is an async operation.
              */
 
             commit(UPDATE_URL, url);

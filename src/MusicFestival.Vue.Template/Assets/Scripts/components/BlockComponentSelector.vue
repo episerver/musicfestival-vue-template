@@ -3,11 +3,11 @@
     Used to match Models/Blocks/*.cs with Assets/Scripts/components/blocks/*.vue.
     `component` dynamically loads a Vue component: https://vuejs.org/v2/guide/components.html#Dynamic-Components
 
-    Compared to the `PageComponentSelector`, this does not use the
-    `EpiDataModelMixin` mixin, so it takes its model as a Vue prop. This is
-    because a block will never be rendered by itself. It will be rendered
-    either in Preview.vue during OPE or ContentArea.vue, and they provide the
-    model.
+    Compared to the `PageComponentSelector`, this does not use the store to get
+    the model as there can be multiple instances of this component on the same
+    page, so it takes its model as a Vue prop. This is because a block will
+    never be rendered by itself. It will be rendered either in Preview.vue
+    during OPE or ContentArea.vue, and they provide the model.
 -->
 
 <template>

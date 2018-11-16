@@ -1,17 +1,13 @@
 /**
  * Context flags that are useful to enable properly working On-Page Editing.
- * Also sets them on every Vue component under the `$epi` property, which is
- * then picked up by the different Epi helpers in this template site.
- *
- * Exports:
- * - `inEditMode`: We want to turn off routing as long as we're in the CMS UI.
- *                 Used in the Vue components `EpiLink` and `EpiViewModeLink`.
- * - `isEditable`: We want to know when to enable On-Page Editing (OPE). Used
- *                 in the Vue directive `epiEdit`, Vue component `EpiProperty`,
- *                 and Vue mixin `EpiDataModelMixin`.
+ * Sets the context in the vuex store to be used on every component that is
+ * interested.
  *
  * These values are `false` by default and will be updated when the page has
  * finished loading. See the event handler at the bottom of the page.
+ *
+ * Also registers the `beta/contentSaved` event that will update
+ * the model in the store during editing.
  */
 
 import store from '@/Scripts/store';

@@ -3,7 +3,7 @@
  * Razor views. It enables On-Page Editing on elements and disables the DOM
  * updating from the CMS so that Vue can keep the responsibility over the DOM.
  *
- * It's enabled by the Vue component instance property `$epi.isEditable`, but
+ * It's enabled by the `isEditable` value that is stored in the vuex store, but
  * can be overwritten by a component having a property named
  * `epiDisableEditing` being true.
  *

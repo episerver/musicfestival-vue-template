@@ -1,3 +1,8 @@
+/**
+ * The module responsible to handling Episerver specific state that is relevant
+ * when editing content in edit mode.
+ */
+
 import { UPDATE_CONTEXT } from '../mutation-types.js';
 
 const state = {
