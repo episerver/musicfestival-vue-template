@@ -32,14 +32,15 @@ This project uses:
 
 ### Vuex store
 
-* [index.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/index.js): The main Vuex store.
-* [contentModule.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/modules/contentModule.js): The module that stores and updates the model object to be displayed on every component.
+* [index.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/index.js): the main Vuex store.
+* [epiDataModel.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/modules/epiDataModel.js): the module that stores and updates the model object to be displayed on every component.
+* [epiContext.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/modules/epiContext.js): makes `inEditMode` and `isEditable` flags available to the OPE helpers.
 
 ### On-Page Editing helpers
 
 * [epiEdit.js](src/MusicFestival.Vue.Template/Assets/Scripts/directives/epiEdit.js): a directive that can be added on components to make them editable (e.g. `<span v-epi-edit="Name">`).
 * [EpiProperty.vue](src/MusicFestival.Vue.Template/Assets/Scripts/components/EpiProperty.vue): a component that renders a button to edit a property (e.g. `<epi-property property-name="Name">`).
-* [epiContext.js](src/MusicFestival.Vue.Template/Assets/Scripts/epiContext.js): makes `inEditMode` and `isEditable` flags available to the OPE helpers.
+* [epiMessages.js](src/MusicFestival.Vue.Template/Assets/Scripts/epiMessages.js): registers the `beta/contentSaved` and `beta/epiReady` message handlers that updates the vuex store.
 
 ### Routing helpers
 

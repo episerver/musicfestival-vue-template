@@ -3,7 +3,7 @@
 
     * Maps Models/Pages/*.cs to Assets/Scripts/components/pages/*.vue
 
-    It gets its `model` from the vuex stores `contentModule` that's
+    It gets its `model` from the vuex stores `epiDataModel` module that's
     automatically updated in OPE when data is edited (through the
     `beta/contentSaved` event). The store also includes `modelLoaded` that's
     set to true when the model has been populated in the store. This flag
@@ -22,8 +22,8 @@ import { mapState } from 'vuex';
 
 export default {
     computed: mapState({
-        model: state => state.content.model,
-        modelLoaded: state => state.content.modelLoaded
+        model: state => state.epiDataModel.model,
+        modelLoaded: state => state.epiDataModel.modelLoaded
     }),
     methods: {
         getComponentTypeForPage(model) {

@@ -10,10 +10,10 @@ import '@/Styles/Main.less';
 import router from '@/Scripts/router.js';
 import store from '@/Scripts/store';
 
-// epiContext does not export anything but registers some event handlers that
-// are required for the site to work.
+// `epiMessages` does not export anything but registers the `beta/contentSaved`
+// and `beta/epiReady` message handlers that updates the vuex store.
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Import_a_module_for_its_side_effects_only
-import '@/Scripts/epiContext';
+import '@/Scripts/epiMessages';
 
 // generate svg sprite from all files in /Assets/Images/SVG
 const files = require.context('@/Images/SVG', false, /.*\.svg$/);

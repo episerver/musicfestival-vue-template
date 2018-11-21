@@ -8,7 +8,7 @@
     since blocks don't have them. Instead, the content link is used.
 
     Like `PageComponentSelector`, this page get the model from the vuex stores
-    `contentModule`.
+    `epiDataModel` module.
 -->
 
 <template>
@@ -51,8 +51,8 @@ import { updateModelByContentLink } from '@/Scripts/store/action-types.js';
 export default {
     props: ['contentLink'],
     computed: mapState({
-        model: state => state.content.model,
-        modelLoaded: state => state.content.modelLoaded
+        model: state => state.epiDataModel.model,
+        modelLoaded: state => state.epiDataModel.modelLoaded
     }),
     components: {
         BlockComponentSelector

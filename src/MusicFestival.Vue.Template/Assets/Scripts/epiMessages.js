@@ -43,7 +43,7 @@ window.addEventListener('load', () => {
             inEditMode: window.epi.beta.inEditMode,
             isEditable: window.epi.beta.isEditable
         };
-
+        // Make the context available to all Vue components.
         store.commit(UPDATE_CONTEXT, context);
         registerContentSavedEvent(context.isEditable);
     }

@@ -1,4 +1,4 @@
-// mutation for the content module
+// mutation for the epiDataModel module
 export const UPDATE_MODEL = 'UPDATE_MODEL';
 
 // mutation for the epiContext module
