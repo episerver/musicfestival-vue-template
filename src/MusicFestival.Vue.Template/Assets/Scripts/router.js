@@ -26,7 +26,13 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-    store.dispatch(updateModelByFriendlyUrl, to.fullPath);
+    // URL is updated by vue-route-sync, and when time travelling with the
+    // debugger we don't want to trigger a model commit as the model is already
+    // part of the store holding the url update.
+    if (store.state.epiDataModel.model.url !== to.fullPath) {
+        store.dispatch(updateModelByFriendlyUrl, to.fullPath);
+    }
+
     next();
 });
 

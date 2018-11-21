@@ -36,21 +36,23 @@ const actions = {
             commit(UPDATE_MODEL, response.data);
         });
     },
-    [updateModelByContentLink]({commit, state}, contentLink) {
+    [updateModelByContentLink]({commit, rootState}, contentLink) {
         /**
-         * Updating a model by content link is done when something is being edited and when viewing a block.
-         * In order to be sure that we get the correct model, we need to keep any previously
-         * existing query string from the friendly URL.
+         * Updating a model by content link is done when something is being
+         * edited and when viewing a block. In order to be sure that we get the
+         * correct model, we need to keep any previously existing query string
+         * from the friendly URL.
          *
-         * See the implementation of ExtendedContentModelMapper.GetContextMode for additional details.
+         * See the implementation of ExtendedContentModelMapper.GetContextMode
+         * for additional details.
          */
 
-        let queryString = null;
-        if (state.model && state.model.url) {
-            queryString = state.model.url.split('?')[1];
-        }
-        let contentLinkUrl = queryString ? contentLink + '?' + queryString : contentLink;
-        return api.getContentByContentLink(contentLinkUrl, parameters).then(response => {
+        const params = Object.assign({},
+            parameters,
+            rootState.route.query
+        );
+
+        return api.getContentByContentLink(contentLink, params).then(response => {
             commit(UPDATE_MODEL, response.data);
         });
     }

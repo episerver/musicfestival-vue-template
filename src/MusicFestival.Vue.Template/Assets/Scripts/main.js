@@ -9,6 +9,8 @@ import '@/Styles/Main.less';
 
 import router from '@/Scripts/router.js';
 import store from '@/Scripts/store';
+import { sync } from 'vuex-router-sync';
+sync(store, router);
 
 // `epiMessages` does not export anything but registers the `beta/contentSaved`
 // and `beta/epiReady` message handlers that updates the vuex store.
