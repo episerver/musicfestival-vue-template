@@ -30,9 +30,8 @@ This project uses:
 
 ## Notable files
 
-### Vuex store
+### Vuex store modules
 
-* [index.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/index.js): the main Vuex store.
 * [epiDataModel.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/modules/epiDataModel.js): the module that stores and updates the model object to be displayed on every component.
 * [epiContext.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/modules/epiContext.js): makes `inEditMode` and `isEditable` flags available to the OPE helpers.
 

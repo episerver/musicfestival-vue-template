@@ -46,9 +46,9 @@ export default {
             artists: {}
         };
     },
-    computed: mapState([
-        'url'
-    ]),
+    computed: mapState({
+        url: state => state.epiDataModel.model.url
+    }),
     created() {
         this.updateData();
     },
