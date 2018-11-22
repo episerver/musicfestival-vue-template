@@ -29,19 +29,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { HIDE_MODAL } from '@/Scripts/store/mutation-types.js';
+import { mapState, mapMutations } from 'vuex';
+import { HIDE_MODAL } from '@/Scripts/store/modules/appContext.js';
 
 export default {
     computed: mapState({
         modalShowing: state => state.appContext.modalShowing
     }),
-    methods: {
-        closeModal() {
-            this.$store.commit(HIDE_MODAL);
-            this.$emit('close');
-        }
-    }
+    methods: mapMutations({
+        closeModal: HIDE_MODAL
+    })
 };
 </script>
 

@@ -11,8 +11,8 @@
  */
 
 import store from '@/Scripts/store';
-import { UPDATE_CONTEXT } from '@/Scripts/store/mutation-types';
-import { updateModelByContentLink } from '@/Scripts/store/action-types.js';
+import { UPDATE_CONTEXT } from '@/Scripts/store/modules/epiContext.js';
+import { UPDATE_MODEL_BY_CONTENT_LINK } from '@/Scripts/store/modules/epiDataModel.js';
 
 const registerContentSavedEvent = (isEditable) => {
     /**
@@ -24,7 +24,7 @@ const registerContentSavedEvent = (isEditable) => {
 
     if (isEditable) {
         window.epi.subscribe('beta/contentSaved', message => {
-            store.dispatch(updateModelByContentLink, message.contentLink);
+            store.dispatch(UPDATE_MODEL_BY_CONTENT_LINK, message.contentLink);
         });
     }
 };

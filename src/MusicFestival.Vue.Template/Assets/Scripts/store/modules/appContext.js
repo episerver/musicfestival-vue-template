@@ -3,7 +3,9 @@
  * interesting for several components that otherwise doesn't share state.
  */
 
-import { SHOW_MODAL, HIDE_MODAL } from '../mutation-types.js';
+//mutations for the appContext module
+export const SHOW_MODAL = 'appContext/SHOW_MODAL';
+export const HIDE_MODAL = 'appContext/HIDE_MODAL';
 
 const state = {
     modalShowing: false

@@ -6,14 +6,17 @@
  */
 
 import api from '@/Scripts/api/api.js';
-import { UPDATE_MODEL } from '../mutation-types.js';
-import { updateModelByFriendlyUrl, updateModelByContentLink } from '../action-types.js';
+
+//actions for the epiDataModel module
+export const UPDATE_MODEL_BY_URL = 'epiDataModel/UPDATE_MODEL_BY_URL';
+export const UPDATE_MODEL_BY_CONTENT_LINK = 'epiDataModel/UPDATE_MODEL_BY_CONTENT_LINK';
 
 const state = {
     model: {},
     modelLoaded: false
 };
 
+const UPDATE_MODEL = 'epiDataModel/UPDATE_MODEL';
 const mutations = {
     [UPDATE_MODEL](state, newModel) {
         state.model = newModel;
@@ -26,7 +29,7 @@ const parameters = {
 };
 
 const actions = {
-    [updateModelByFriendlyUrl]({commit}, friendlyUrl) {
+    [UPDATE_MODEL_BY_URL]({commit}, friendlyUrl) {
         /**
          * When updating a model by friendly URL we assume that the friendly URL
          * contains every querystring parameter that we might need on the server.
@@ -36,7 +39,7 @@ const actions = {
             commit(UPDATE_MODEL, response.data);
         });
     },
-    [updateModelByContentLink]({commit, rootState}, contentLink) {
+    [UPDATE_MODEL_BY_CONTENT_LINK]({commit, rootState}, contentLink) {
         /**
          * Updating a model by content link is done when something is being
          * edited and when viewing a block. In order to be sure that we get the

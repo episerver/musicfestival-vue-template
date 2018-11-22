@@ -7,7 +7,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from '@/Scripts/store';
-import { updateModelByFriendlyUrl } from '@/Scripts/store/action-types.js';
+import { UPDATE_MODEL_BY_URL } from '@/Scripts/store/modules/epiDataModel.js';
 
 import PageComponentSelector from '@/Scripts/components/PageComponentSelector.vue';
 
@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
     // debugger we don't want to trigger a model commit as the model is already
     // part of the store holding the url update.
     if (store.state.epiDataModel.model.url !== to.fullPath) {
-        store.dispatch(updateModelByFriendlyUrl, to.fullPath);
+        store.dispatch(UPDATE_MODEL_BY_URL, to.fullPath);
     }
 
     next();

@@ -3,7 +3,8 @@
  * when editing content in edit mode.
  */
 
-import { UPDATE_CONTEXT } from '../mutation-types.js';
+// mutation for the epiContext module
+export const UPDATE_CONTEXT = 'epiContext/UPDATE_CONTEXT';
 
 const state = {
     inEditMode: false,
