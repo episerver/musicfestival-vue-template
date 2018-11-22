@@ -7,7 +7,7 @@
 import Vue from 'vue';
 import '@/Styles/Main.less';
 
-import router from '@/Scripts/router.js';
+import router from '@/Scripts/router';
 import store from '@/Scripts/store';
 import { sync } from 'vuex-router-sync';
 sync(store, router);

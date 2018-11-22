@@ -7,7 +7,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from '@/Scripts/store';
-import { UPDATE_MODEL_BY_URL } from '@/Scripts/store/modules/epiDataModel.js';
+import { UPDATE_MODEL_BY_URL } from '@/Scripts/store/modules/epiDataModel';
 
 import PageComponentSelector from '@/Scripts/components/PageComponentSelector.vue';
 

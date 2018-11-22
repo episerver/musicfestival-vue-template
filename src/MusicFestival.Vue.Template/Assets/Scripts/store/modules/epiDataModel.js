@@ -5,7 +5,7 @@
  * site.
  */
 
-import api from '@/Scripts/api/api.js';
+import api from '@/Scripts/api/api';
 
 //actions for the epiDataModel module
 export const UPDATE_MODEL_BY_URL = 'epiDataModel/UPDATE_MODEL_BY_URL';

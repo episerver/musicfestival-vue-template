@@ -30,7 +30,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
-import { HIDE_MODAL } from '@/Scripts/store/modules/appContext.js';
+import { HIDE_MODAL } from '@/Scripts/store/modules/appContext';
 
 export default {
     computed: mapState({

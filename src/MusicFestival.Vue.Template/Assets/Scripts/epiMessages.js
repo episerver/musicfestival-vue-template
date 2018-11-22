@@ -11,8 +11,8 @@
  */
 
 import store from '@/Scripts/store';
-import { UPDATE_CONTEXT } from '@/Scripts/store/modules/epiContext.js';
-import { UPDATE_MODEL_BY_CONTENT_LINK } from '@/Scripts/store/modules/epiDataModel.js';
+import { UPDATE_CONTEXT } from '@/Scripts/store/modules/epiContext';
+import { UPDATE_MODEL_BY_CONTENT_LINK } from '@/Scripts/store/modules/epiDataModel';
 
 const registerContentSavedEvent = (isEditable) => {
     /**

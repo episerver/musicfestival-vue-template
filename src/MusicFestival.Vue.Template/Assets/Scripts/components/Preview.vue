@@ -46,7 +46,7 @@
 <script>
 import BlockComponentSelector from '@/Scripts/components/BlockComponentSelector.vue';
 import { mapState } from 'vuex';
-import { UPDATE_MODEL_BY_CONTENT_LINK } from '@/Scripts/store/modules/epiDataModel.js';
+import { UPDATE_MODEL_BY_CONTENT_LINK } from '@/Scripts/store/modules/epiDataModel';
 
 export default {
     props: ['contentLink'],
