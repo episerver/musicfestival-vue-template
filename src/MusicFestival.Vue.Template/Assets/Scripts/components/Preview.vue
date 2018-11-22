@@ -7,8 +7,8 @@
     Compared to the DefaultPage.vue, this does not use the page's friendly URL
     since blocks don't have them. Instead, the content link is used.
 
-    Like `PageComponentSelector`, this page get the model from the vuex stores
-    `epiDataModel` module.
+    Like `PageComponentSelector`, this page gets the model from the vuex
+    store's `epiDataModel` module.
 -->
 
 <template>

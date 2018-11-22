@@ -62,15 +62,15 @@ DefaultPageController.cs
     DefaultPage/Index.cshtml
         DefaultPage.vue
             router-view (Vue.js)
-                router.js (Updates the url on the store so the store updates the model)
-                    PageComponentSelector.vue (Use the model from the store and sets it on child components)
-                        ArtistContainerPage/ArtistDetailsPage/LandingPage.vue
+                router.js (Updates the store model with the url)
+                    PageComponentSelector.vue (Use the model from the store)
+                        ArtistContainerPage/ArtistDetailsPage/LandingPage.vue (Gets the model as a prop)
 
 PreviewController.cs
     Preview/Index.cshtml (sets content-link attribute on <preview>)
-        Preview.vue (Use the model from the store and sets it on child components)
-            BlockComponentSelector.vue
-                BuyTicketBlock/ContentBlock/GenericBlock.vue
+        Preview.vue (Use and update the model in the store with the content link)
+            BlockComponentSelector.vue (Gets the model as a prop and passes it on)
+                BuyTicketBlock/ContentBlock/GenericBlock.vue (Gets the model as a prop)
 ```
 
 ## Building client side resources

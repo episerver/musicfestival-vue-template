@@ -4,10 +4,9 @@
     `component` dynamically loads a Vue component: https://vuejs.org/v2/guide/components.html#Dynamic-Components
 
     Compared to the `PageComponentSelector`, this does not use the store to get
-    the model as there can be multiple instances of this component on the same
-    page, so it takes its model as a Vue prop. This is because a block will
-    never be rendered by itself. It will be rendered either in Preview.vue
-    during OPE or ContentArea.vue, and they provide the model.
+    the model. It must take the model as a prop as the store model can be either:
+    * the block, when editing in Preview.vue
+    * the page that the block belongs to, when rendered by ContentArea.vue
 -->
 
 <template>
