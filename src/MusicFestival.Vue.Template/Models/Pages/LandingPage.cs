@@ -6,6 +6,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
 using EPiServer;
+using MusicFestival.Template.Models.Media;
 
 namespace MusicFestival.Template.Models.Pages
 {
@@ -58,6 +59,7 @@ namespace MusicFestival.Template.Models.Pages
             Name = "Main Content Area",
             GroupName = SystemTabNames.Content,
             Order = 40)]
+        [AllowedTypes(typeof(ContentBlock), typeof(ImageFile))]
         public virtual ContentArea MainContentArea { get; set; }
 
         [CultureSpecific]
@@ -65,6 +67,7 @@ namespace MusicFestival.Template.Models.Pages
             Name = "Footer Content Area",
             GroupName = SystemTabNames.Content,
             Order = 50)]
+        [AllowedTypes(typeof(ContentBlock), typeof(ImageFile))]
         public virtual ContentArea FooterContentArea { get; set; }
     }
 }
