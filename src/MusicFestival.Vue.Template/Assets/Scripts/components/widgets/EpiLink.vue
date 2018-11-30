@@ -6,14 +6,10 @@
 -->
 
 <template>
-    <!-- Editmode -->
-    <a v-if="$epi.inEditMode" class="EpiLink EpiLink-EditMode" :class="className" :href="url">
+    <component :is="defineComponent(url)" class="EPiLink" :to="url" :href="url" :class="className">
         <slot></slot>
-    </a>
-    <!-- Viewmode -->
-    <router-link v-else class="EpiLink" :class="className" :to="url">
-        <slot></slot>
-    </router-link>
+    </component>
+
 </template>
 
 <script>
@@ -21,6 +17,27 @@ export default {
     props: [
         'url',
         'className'
-    ]
+    ],
+    methods: {
+        defineComponent(url) {
+            // summary:
+            //      Define whether we should use the tag 'a' or 'router-link' when generating a link
+            //      The reason is because <router-link> doesn't support absolute link
+            //      (https://github.com/vuejs/vue-router/issues/1131), which happens when we link to a page
+            //      in another site in a multi-sites system
+            //      There is an open feature-request for making 'router-link' support absolute links
+            //      https://github.com/vuejs/vue-router/issues/1280
+            //
+            //      Always user an 'a' tag in edit mode to update the Episerver UI
+            //
+            // url: String
+            //      The url to create a link to
+
+            if (this.$epi.inEditMode) {
+                return 'a';
+            }
+            return (url.match(/^(http(s)?|ftp):\/\//)) ? 'a' : 'router-link';
+        }
+    }
 };
 </script>
