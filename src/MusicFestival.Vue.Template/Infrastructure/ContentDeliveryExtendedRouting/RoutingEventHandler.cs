@@ -34,9 +34,10 @@ namespace ContentDeliveryExtendedRouting.Routing
                     language :
                     $"{language}, { acceptLanguageHeader}";
 
+                var applicationPath = VirtualPathUtility.AppendTrailingSlash(request.ApplicationPath);
                 var property = routingContext.GetCustomRouteData<string>(RoutingConstants.RoutedPropertyKey);
                 var shouldGetChildren = routingContext.GetCustomRouteData<string>(RoutingConstants.ChildrenKey);
-                var contentApiChildPath = $"/{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}/children";
+                var contentApiChildPath = $"{applicationPath}{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}/children";
 
                 if (bool.TryParse(shouldGetChildren, out bool result) && result)
                 {
@@ -45,10 +46,9 @@ namespace ContentDeliveryExtendedRouting.Routing
                 else
                 {
                     httpContext.RewritePath(property != null ?
-                        $"/{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}?{RoutingConstants.RoutedPropertyKey}={property}" :
-                        $"/{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}");
+                        $"{applicationPath}{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}?{RoutingConstants.RoutedPropertyKey}={property}" :
+                        $"{applicationPath}{EPiServer.ContentApi.Core.Internal.RouteConstants.BaseContentApiRoute}content/{routingContext.RoutedContentLink}");
                 }
-
 
                 //Set RouteData to null to pass the request to next routes (WebApi route)
                 e.RoutingSegmentContext.RouteData = null;
