@@ -10,6 +10,8 @@ using EPiServer.Core;
 using EPiServer.ContentApi.Core.Serialization;
 using EPiServer.ContentApi.Cms;
 using EPiServer.ContentApi.Core.Configuration;
+using EPiServer.ContentApi.Routing;
+using MusicFestival.Template.Infrastructure.Routing;
 
 namespace MusicFestival.Template.Infrastructure
 {
@@ -31,6 +33,7 @@ namespace MusicFestival.Template.Infrastructure
 
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.StructureMap()));
             context.Services.AddTransient<IPropertyModelConverter, BuyTicketBlockPropertyModelConverter>();
+            context.Services.AddTransient<RoutingEventHandler, CustomContentApiRoutingEventHandler>();
 
             // set minimumRoles to empty to allow anonymous calls (for visitors to view site in view mode)
             context.Services.Configure<ContentApiConfiguration>(config =>
