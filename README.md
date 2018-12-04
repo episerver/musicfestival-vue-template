@@ -2,7 +2,7 @@
 
 This sample site demonstrates one approach to render Episerver content in a client side framework that is using client side routing for navigation with a working On Page Edit (OPE) mode in the Episerver UI.
 
-This particular solution uses Vue.js but most of the techniques are framework agnostic and can be used with any other framework, such as React or Angular.
+This particular solution uses [Vue.js](https://vuejs.org/) with [Vuex](https://vuex.vuejs.org/) to handle the state of the app in a `single source of truth`. Most of the techniques are framework agnostic and can be used with any other framework, such as React or Angular.
 
 Content is fetched from Episerver using the Content Delivery API: https://world.episerver.com/documentation/developer-guides/CMS/Content/content-delivery-api/
 
@@ -30,12 +30,16 @@ This project uses:
 
 ## Notable files
 
+### Vuex store modules
+
+* [epiDataModel.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/modules/epiDataModel.js): the module that stores and updates the model object to be displayed on every component.
+* [epiContext.js](src/MusicFestival.Vue.Template/Assets/Scripts/store/modules/epiContext.js): makes `inEditMode` and `isEditable` flags available to the OPE helpers.
+
 ### On-Page Editing helpers
 
 * [epiEdit.js](src/MusicFestival.Vue.Template/Assets/Scripts/directives/epiEdit.js): a directive that can be added on components to make them editable (e.g. `<span v-epi-edit="Name">`).
 * [EpiProperty.vue](src/MusicFestival.Vue.Template/Assets/Scripts/components/EpiProperty.vue): a component that renders a button to edit a property (e.g. `<epi-property property-name="Name">`).
-* [epiDataModelMixin.js](src/MusicFestival.Vue.Template/Assets/Scripts/Mixins/epiDataModelMixin.js): adds a `model` property to any component and keeps it updated when content is updated.
-* [epiContext.js](src/MusicFestival.Vue.Template/Assets/Scripts/epiContext.js): makes `inEditMode` and `isEditable` flags available to the OPE helpers.
+* [epiMessages.js](src/MusicFestival.Vue.Template/Assets/Scripts/epiMessages.js): registers the `beta/contentSaved` and `beta/epiReady` message handlers that updates the vuex store.
 
 ### Routing helpers
 
@@ -56,17 +60,17 @@ To avoid having multiple razor files the pages and blocks have their own control
 ```
 DefaultPageController.cs
     DefaultPage/Index.cshtml
-        Site.vue
+        DefaultPage.vue
             router-view (Vue.js)
-                router.js
-                    PageComponentSelector.vue (owns the model)
-                        ArtistContainerPage/ArtistDetailsPage/LandingPage.vue
- 
+                router.js (Updates the store model with the url)
+                    PageComponentSelector.vue (Use the model from the store)
+                        ArtistContainerPage/ArtistDetailsPage/LandingPage.vue (Gets the model as a prop)
+
 PreviewController.cs
     Preview/Index.cshtml (sets content-link attribute on <preview>)
-        Preview.vue (owns the model, and renders multiple BlockComponentSelector)
-            BlockComponentSelector.vue
-                BuyTicketBlock/ContentBlock/GenericBlock.vue
+        Preview.vue (Use and update the model in the store with the content link)
+            BlockComponentSelector.vue (Gets the model as a prop and passes it on)
+                BuyTicketBlock/ContentBlock/GenericBlock.vue (Gets the model as a prop)
 ```
 
 ## Building client side resources
@@ -75,3 +79,7 @@ PreviewController.cs
 * `npm run webpack-build-dev`: Builds a development package.
 * `npm run webpack-watcher`: Builds a development package, and re-builds automatically when relevant files are changed.
 * `npm run webpack-build-prod`: Builds a production package.
+
+## Debugging Vuex state
+
+Using the [Vue-devtools](https://github.com/vuejs/vue-devtools) to see the state changes in the store in view mode works as expected. There are however some limitations to follow state changes when you are editing in Episerver edit mode because of the site is running inside an iframe. To be able to see the vuex state while editing you need to run the stand alone electron app as described on the github page: [Vue standalone Electron app](https://github.com/vuejs/vue-devtools/blob/master/shells/electron/README.md).

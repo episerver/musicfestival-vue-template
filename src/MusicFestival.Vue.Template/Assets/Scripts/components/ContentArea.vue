@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import * as CONSTANTS from '@/Scripts/constants.js';
+import * as CONSTANTS from '@/Scripts/constants';
 import BlockComponentSelector from '@/Scripts/components/BlockComponentSelector.vue';
 
 export default {

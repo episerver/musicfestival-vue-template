@@ -7,7 +7,15 @@
 import Vue from 'vue';
 import '@/Styles/Main.less';
 
-import router from '@/Scripts/router.js';
+import router from '@/Scripts/router';
+import store from '@/Scripts/store';
+import { sync } from 'vuex-router-sync';
+sync(store, router);
+
+// `epiMessages` does not export anything but registers the `beta/contentSaved`
+// and `beta/epiReady` message handlers that updates the vuex store.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Import_a_module_for_its_side_effects_only
+import '@/Scripts/epiMessages';
 
 // generate svg sprite from all files in /Assets/Images/SVG
 const files = require.context('@/Images/SVG', false, /.*\.svg$/);
@@ -15,7 +23,7 @@ files.keys().forEach(files);
 
 // Episerver helpers
 import EpiEdit from '@/Scripts/directives/epiEdit';
-import epiContext from '@/Scripts/epiContext';
+Vue.directive('epi-edit', EpiEdit);
 
 // Blocks
 import BuyTicketBlock from '@/Scripts/components/blocks/BuyTicketBlock.vue';
@@ -31,9 +39,6 @@ import LandingPage from '@/Scripts/components/pages/LandingPage.vue';
 import Preview from '@/Scripts/components/Preview.vue';
 import DefaultPage from '@/Scripts/components/DefaultPage.vue';
 
-// Episerver helpers
-Vue.directive('epi-edit', EpiEdit);
-
 // Blocks
 Vue.component('BuyTicketBlock', BuyTicketBlock);
 Vue.component('ContentBlock', ContentBlock);
@@ -48,20 +53,9 @@ Vue.component('LandingPage', LandingPage);
 Vue.component('Preview', Preview);
 Vue.component('DefaultPage', DefaultPage);
 
-const appContext = {
-    modalShowing: false
-};
-
-Vue.prototype.$app = appContext;
-
 /* eslint-disable-next-line no-unused-vars */
 let App = new Vue({
     el: '#App',
-    router,
-    // This data is only to convert `epiContext` and `appContext` to reactive
-    // properties, which is referenced through `this.$epi` on all components.
-    data: {
-        epiContext,
-        appContext
-    }
+    store,
+    router
 });

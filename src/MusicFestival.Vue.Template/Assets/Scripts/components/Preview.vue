@@ -4,11 +4,11 @@
     * The block is selected with the `BlockComponentSelector` based on its name.
     * Views/Preview/Index.cshtml outputs this component with the content link.
 
-    Compared to the DefaultPage.vue, this does not use the page's friendly URL since
-    blocks don't have them. Instead, the content link is used.
+    Compared to the DefaultPage.vue, this does not use the page's friendly URL
+    since blocks don't have them. Instead, the content link is used.
 
-    Like `PageComponentSelector`, this page owns the model through the
-    `EpiDataModelMixin` mixin.
+    Like `PageComponentSelector`, this page gets the model from the vuex
+    store's `epiDataModel` module.
 -->
 
 <template>
@@ -44,17 +44,21 @@
 </template>
 
 <script>
-import EpiDataModelMixin from '@/Scripts/mixins/epiDataModelMixin';
 import BlockComponentSelector from '@/Scripts/components/BlockComponentSelector.vue';
+import { mapState } from 'vuex';
+import { UPDATE_MODEL_BY_CONTENT_LINK } from '@/Scripts/store/modules/epiDataModel';
 
 export default {
     props: ['contentLink'],
-    mixins: [EpiDataModelMixin],
+    computed: mapState({
+        model: state => state.epiDataModel.model,
+        modelLoaded: state => state.epiDataModel.modelLoaded
+    }),
     components: {
         BlockComponentSelector
     },
     created() {
-        this.updateModelByContentLink(this.contentLink);
+        this.$store.dispatch(UPDATE_MODEL_BY_CONTENT_LINK, this.contentLink);
     }
 };
 </script>

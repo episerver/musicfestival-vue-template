@@ -1,6 +1,6 @@
 /**
- * Wraps the calls to the ContentDeliveryAPI. It's used by `EpiDataModelMixin`,
- * `PageComponentSelector`, and `ArtistContainerPage`.
+ * Wraps the calls to the ContentDeliveryAPI. It's used by the vuex
+ * `epiDataModel` module and the `ArtistContainerPage` component.
  */
 
 import axios from 'axios';
@@ -31,7 +31,7 @@ export default {
      * Getting data from ContentDeliveryAPI through regular routing (friendly
      * URLs) is enabled by the extensions in Infrastructure/ContentDeliveryExtendedRouting.
      * It is used in MusicFestival to get:
-     *  - page data, through the `EpiDataModelMixin`
+     *  - page data, through the vuex `epiDataModel` module
      */
     getContentByFriendlyUrl: (friendlyUrl, parameters) => callRegularRouting('get', friendlyUrl, parameters),
 

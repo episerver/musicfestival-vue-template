@@ -47,6 +47,8 @@ import LanguageSelector from '@/Scripts/components/widgets/LanguageSelector.vue'
 import EpiLink from '@/Scripts/components/widgets/EpiLink.vue';
 import Modal from '@/Scripts/components/widgets/Modal.vue';
 import BuyTicketBlock from '@/Scripts/components/blocks/BuyTicketBlock.vue';
+import { SHOW_MODAL } from '@/Scripts/store/modules/appContext';
+import { mapMutations } from 'vuex';
 
 export default {
     components: {
@@ -58,11 +60,9 @@ export default {
         BuyTicketBlock
     },
     props: ['model'],
-    methods: {
-        showModal() {
-            this.$app.modalShowing = true;
-        }
-    }
+    methods: mapMutations({
+        showModal: SHOW_MODAL
+    })
 };
 </script>
 

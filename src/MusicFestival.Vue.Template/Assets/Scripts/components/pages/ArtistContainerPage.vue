@@ -37,14 +37,18 @@ import BackButton from '@/Scripts/components/widgets/BackButton.vue';
 import Card from '@/Scripts/components/widgets/Card.vue';
 import LanguageSelector from '@/Scripts/components/widgets/LanguageSelector.vue';
 import _ from 'lodash';
+import { mapState } from 'vuex';
 
 export default {
-    props: ['url', 'model'],
+    props: ['model'],
     data() {
         return {
             artists: {}
         };
     },
+    computed: mapState({
+        url: state => state.epiDataModel.model.url
+    }),
     created() {
         this.updateData();
     },
@@ -55,7 +59,7 @@ export default {
         updateData() {
             const parameters = {};
 
-            return api.getChildren(this.$props.url, parameters)
+            return api.getChildren(this.url, parameters)
                 .then(success => {
                     // sort response alphabetically
                     let ordered = _.orderBy(success.data, [artist => artist.artistName.toLowerCase()], ['asc']);

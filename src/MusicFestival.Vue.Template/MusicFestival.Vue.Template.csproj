@@ -345,10 +345,13 @@
     <Content Include="Assets\Scripts\api\getComponentTypeForContent.js" />
     <Content Include="Assets\Scripts\constants.js" />
     <Content Include="Assets\Scripts\directives\epiEdit.js" />
-    <Content Include="Assets\Scripts\epiContext.js" />
+    <Content Include="Assets\Scripts\epiMessages.js" />
     <Content Include="Assets\Scripts\main.js" />
-    <Content Include="Assets\Scripts\Mixins\epiDataModelMixin.js" />
     <Content Include="Assets\Scripts\router.js" />
+    <Content Include="Assets\Scripts\store\index.js" />
+    <Content Include="Assets\Scripts\store\modules\appContext.js" />
+    <Content Include="Assets\Scripts\store\modules\epiContext.js" />
+    <Content Include="Assets\Scripts\store\modules\epiDataModel.js" />
     <Content Include="Content\editor.css" />
     <Content Include="postcss.config.js" />
     <Content Include="webpack.config.js" />

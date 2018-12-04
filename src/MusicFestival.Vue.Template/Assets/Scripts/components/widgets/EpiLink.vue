@@ -13,11 +13,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
     props: [
         'url',
         'className'
     ],
+    computed: mapState({
+        inEditMode: state => state.epiContext.inEditMode
+    }),
     methods: {
         defineComponent(url) {
             // summary:
@@ -33,7 +38,7 @@ export default {
             // url: String
             //      The url to create a link to
 
-            if (this.$epi.inEditMode) {
+            if (this.inEditMode) {
                 return 'a';
             }
             return (url.match(/^(http(s)?|ftp):\/\//)) ? 'a' : 'router-link';
