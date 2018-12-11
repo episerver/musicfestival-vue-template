@@ -24,21 +24,9 @@ function removeEditAttributes(el) {
 }
 
 function setEditAttributes(el, binding) {
-    let value = binding.value;
-    let propertyName = '',
-        renderType = 'none',
-        editType = 'floating';
-    if (typeof value === 'string') {
-        propertyName = value;
-    } else {
-        propertyName = value.name;
-        renderType = value.renderType ? value.renderType : renderType;
-        editType = value.editType ? value.editType : editType;
-    }
-
-    el.setAttribute('data-epi-property-name', propertyName);
-    el.setAttribute('data-epi-property-render', renderType);
-    el.setAttribute('data-epi-property-edittype', editType);
+    el.setAttribute('data-epi-property-name', binding.value);
+    el.setAttribute('data-epi-property-render', 'none');
+    el.setAttribute('data-epi-property-edittype', 'floating');
 }
 
 function toggleEditAttributes(el, binding, vnode) {
