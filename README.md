@@ -18,7 +18,7 @@ This project uses:
 1. Run `setup.cmd`
 2. Open `MusicFestival.Vue.Template.sln`
 3. Hit `Ctrl + F5`
-4. Login with either one of the following:
+4. Login on `/episerver` with either one of the following:
 
 |Name    |Password    |Mailbox | Email |
 |--------|------------|--------|-------|
