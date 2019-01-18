@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using EPiServer.Web.Routing;
 using EPiServer.Core;
 using Microsoft.AspNet.Identity;
-using EPiServer.ContentApi.Core.Internal;
+using EPiServer.ContentApi.Core;
 
 [assembly: OwinStartup(typeof(MusicFestival.Template.Infrastructure.Owin.Startup))]
 namespace MusicFestival.Template.Infrastructure.Owin
