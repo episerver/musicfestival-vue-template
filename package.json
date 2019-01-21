@@ -8,10 +8,9 @@
     "license": "Apache-2.0",
     "scripts": {
         "lint": "eslint . --ext .js,.vue",
-        "webpack": "npm run webpack-build-dev",
-        "webpack-watcher": "cd ./src/MusicFestival.Vue.Template && set NODE_ENV=development&& webpack -w",
-        "webpack-build-dev": "cd ./src/MusicFestival.Vue.Template && set NODE_ENV=development&& webpack",
-        "webpack-build-prod": "cd ./src/MusicFestival.Vue.Template && set NODE_ENV=production&& webpack"
+        "start": "cd ./src/MusicFestival.Vue.Template && set NODE_ENV=development && webpack -w",
+        "build": "cd ./src/MusicFestival.Vue.Template && set NODE_ENV=production && webpack",
+        "build:dev": "cd ./src/MusicFestival.Vue.Template && set NODE_ENV=development && webpack"
     },
     "dependencies": {
         "axios": "^0.17.1",
