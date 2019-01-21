@@ -1,14 +1,16 @@
 @ECHO OFF
 SETLOCAL
 
+REM Clear node modules before installing
 CALL npm ci
 IF %errorlevel% NEQ 0 EXIT /B %errorlevel%
 
-SET MusicFestival=src\MusicFestival.Vue.Template
-
-CALL npm run webpack
+REM Restore nuget packages
+CALL .\.nuget\nuget.exe restore MusicFestival.Vue.Template.sln
 IF %errorlevel% NEQ 0 EXIT /B %errorlevel%
 
+REM Set up database
+SET MusicFestival=src\MusicFestival.Vue.Template
 IF EXIST %MusicFestival%\App_Data (
     ECHO Remove all files from the app data folder
     DEL %MusicFestival%\App_Data\*.* /F /Q || Exit /B 1
