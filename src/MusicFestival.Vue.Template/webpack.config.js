@@ -25,9 +25,28 @@ var config = {
     },
     module: {
         loaders: [{
-            // the loaders will be applied from right to left
             test: /\.less$/,
-            loader: extractTextPlugin.extract('css-loader!postcss-loader!less-loader!import-glob-loader')
+            use: extractTextPlugin.extract({
+                use: [
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            // If you are having trouble with urls not resolving add this setting.
+                            // See https://github.com/webpack-contrib/css-loader#url
+                            url: false
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                    {
+                        loader: 'less-loader'
+                    },
+                    {
+                        loader: 'import-glob-loader'
+                    }
+                ]
+            })
         },
         {
             test: /\.js$/,
