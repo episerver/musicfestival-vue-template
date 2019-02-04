@@ -16,8 +16,8 @@ This project uses:
 ## Setup and Run
 
 1. Run `setup.cmd`
-2. Open `MusicFestival.Vue.Template.sln`
-3. Hit `Ctrl + F5`
+2. Open `MusicFestival.Vue.Template.sln` and hit `Ctrl + F5`
+    * Or build with `build.cmd`, and set up the site on IIS
 4. Login on `/episerver` with either one of the following:
 
 |Name    |Password    |Mailbox | Email |
