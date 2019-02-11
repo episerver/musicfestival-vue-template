@@ -57,6 +57,14 @@ namespace MusicFestival.Template.Models
             return contentModel;
         }
 
+        private string ResolveUrl(ContentReference contentLink, string language)
+        {
+            return _urlResolver.GetUrl(contentLink, language, new UrlResolverArguments
+            {
+                ContextMode = GetContextMode()
+            });
+        }
+
         /// <summary>
         /// Extends the language models with a link to each language.
         /// The links are used in Assets/Scripts/components/LanguageSelector.vue
@@ -131,15 +139,6 @@ namespace MusicFestival.Template.Models
             var contentModelDisplayOption = propertyModel.Value.FirstOrDefault(x => x.ContentLink.Id == contentApiModel.ContentLink.Id)?.DisplayOption;
             contentApiModel.Properties.Add("displayOption", contentModelDisplayOption);
             return contentApiModel;
-        }
-
-        private string ResolveUrl(ContentReference contentLink, string language)
-        {
-            var contextMode = GetContextMode();
-            return _urlResolver.GetUrl(contentLink, language, new UrlResolverArguments
-            {
-                ContextMode = contextMode
-            });
         }
 
         /// <summary>

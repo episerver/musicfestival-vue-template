@@ -5,9 +5,9 @@
 
 import axios from 'axios';
 
-const call = (method, url, baseURL, parameters, headers) => {
+const get = (baseURL, url, parameters, headers) => {
     return axios({
-        method: method,
+        method: 'get',
         baseURL: baseURL,
         url: url,
         params: parameters,
@@ -15,9 +15,7 @@ const call = (method, url, baseURL, parameters, headers) => {
     });
 };
 
-const baseContentApiURL = document.documentElement.dataset.applicationPath + 'api/episerver/v2.0/';
-const callContentAPI = (method, url, parameters) => call(method, url, baseContentApiURL, parameters);
-const callRegularRouting = (method, url, parameters) => call(method, url, '/', parameters, { Accept: 'application/json'});
+const applicationPath = document.documentElement.dataset.applicationPath;
 
 export default {
     /**
@@ -26,15 +24,16 @@ export default {
      *  - block data
      *  - updated data after a `beta/contentSaved` message, which has the content link
      */
-    getContentByContentLink: (contentLink, parameters) => callContentAPI('get', `content/${contentLink}`, parameters),
+    getContentByContentLink: (contentLink, parameters) =>
+        get(`${applicationPath}api/episerver/v2.0/`, `content/${contentLink}`, parameters),
 
     /**
-     * Getting data from ContentDeliveryAPI through regular routing (friendly
-     * URLs) is enabled by the extensions in Infrastructure/ContentDeliveryExtendedRouting.
+     * Getting data from ContentDeliveryAPI through regular routing (friendly URLs) was added in ContentDeliveryAPI 2.3.0.
      * It is used in MusicFestival to get:
      *  - page data, through the vuex `epiDataModel` module
      */
-    getContentByFriendlyUrl: (friendlyUrl, parameters) => callRegularRouting('get', friendlyUrl, parameters),
+    getContentByFriendlyUrl: (friendlyUrl, parameters) =>
+        get('/', friendlyUrl, parameters, { Accept: 'application/json'}),
 
     /**
      * Getting the children of the page with ContentDeliveryAPI is enabled by
@@ -42,7 +41,7 @@ export default {
      * It is used in MusicFestival to get:
      *  - artist list in ArtistContainerPage.vue
      */
-    getChildren: (friendlyUrl, parameters) => {
+    getChildren(friendlyUrl, parameters) {
         // Split URL into path and queries
         const urlPieces = friendlyUrl.split('?');
         // In View mode we might visit the URL with or without a trailing / (i.e. "http://localhost:56312/en/artists" or "http://localhost:56312/en/artists/")
@@ -53,6 +52,6 @@ export default {
         // Concatenate the friendly URL with "/children" for the Content API
         const callUrl = pathname + 'children' + queries;
 
-        return callRegularRouting('get', callUrl, parameters);
+        return this.getContentByFriendlyUrl(callUrl, parameters);
     }
 };
