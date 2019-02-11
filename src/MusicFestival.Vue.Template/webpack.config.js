@@ -1,6 +1,5 @@
 /* eslint-env node */
 var path = require('path'),
-    notifier = require('webpack-build-notifier'),
     extractTextPlugin = require('extract-text-webpack-plugin'),
     webpack = require('webpack');
 
@@ -122,11 +121,6 @@ if (process.env.NODE_ENV === 'production') {
         output: {
             comments: false
         }
-    }));
-} else {
-    // and stuff that happens during development, like the toaster notification.
-    config.plugins.push(new notifier({
-        title: 'MusicFestival Webpack Build'
     }));
 }
 
