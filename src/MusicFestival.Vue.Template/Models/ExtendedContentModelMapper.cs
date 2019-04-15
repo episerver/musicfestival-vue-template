@@ -1,5 +1,4 @@
 ﻿using EPiServer.Cms.Shell;
-using EPiServer.ContentApi.Core;
 using EPiServer.ContentApi.Core.Serialization;
 using EPiServer.ContentApi.Core.Serialization.Models;
 using EPiServer.Core;
@@ -26,7 +25,7 @@ namespace MusicFestival.Template.Models
         private readonly IUrlResolver _urlResolver;
         private readonly ServiceAccessor<HttpContextBase> _httpContextAccessor;
         private readonly IContentVersionRepository _versionRepository;
-
+        
         public ExtendedContentModelMapper(IUrlResolver urlResolver, IContentModelMapper defaultContentModelMapper, ServiceAccessor<HttpContextBase> httpContextAccessor, IContentVersionRepository versionRepository)
         {
             _urlResolver = urlResolver;
@@ -44,14 +43,12 @@ namespace MusicFestival.Template.Models
         {
             var contentModel = _defaultContentModelMapper.TransformContent(content, excludePersonalizedContent, expand);
             contentModel.Url = ResolveUrl(content.ContentLink, content.LanguageBranch());
-            contentModel.Properties = contentModel.Properties.Select(FlattenProperty).ToDictionary(x=>x.Key, x=>x.Value);
 
-            var parentUrl = ResolveUrl(content.ParentLink, content.LanguageBranch());
-            contentModel.Properties.Add("parentUrl", parentUrl);
+            contentModel.Properties = contentModel.Properties.Select(FlattenProperty).ToDictionary(x => x.Key, x => x.Value);
 
-            if (contentModel.ExistingLanguages != null)
+            if (contentModel.ParentLink != null)
             {
-                ExtendLanguageModels(contentModel, content);
+                contentModel.ParentLink.Url = ResolveUrl(content.ParentLink, content.LanguageBranch());
             }
 
             return contentModel;
@@ -63,34 +60,6 @@ namespace MusicFestival.Template.Models
             {
                 ContextMode = GetContextMode()
             });
-        }
-
-        /// <summary>
-        /// Extends the language models with a link to each language.
-        /// The links are used in Assets/Scripts/components/LanguageSelector.vue
-        /// </summary>
-        private void ExtendLanguageModels(ContentApiModel contentModel, IContent content)
-        {
-            var listPublished = _versionRepository.ListPublished(content.ContentLink);
-            var listLanguagesWithPublishedContents = listPublished.Select(x => x.LanguageBranch);
-
-            // Filter the existingLanguages list to make it contain only languages which has a published version
-            contentModel.ExistingLanguages =
-                contentModel.ExistingLanguages.Where(x => listLanguagesWithPublishedContents.Contains(x.Name)).Select(x => new ExtendedLanguageModel(x)
-                {
-                    Link = ResolveUrl(content.ContentLink, x.Name)
-                }).ToList<LanguageModel>();
-        }
-
-        private class ExtendedLanguageModel: LanguageModel
-        {
-            public ExtendedLanguageModel(LanguageModel item)
-            {
-                DisplayName = item.DisplayName;
-                Name = item.Name;
-            }
-
-            public string Link { get; set; }
         }
 
         private static KeyValuePair<string, object> FlattenProperty(KeyValuePair<string, object> property)
@@ -108,7 +77,7 @@ namespace MusicFestival.Template.Models
             switch (propertyValue)
             {
                 case ContentAreaPropertyModel propertyModel:
-                    return propertyModel?.ExpandedValue?.Select(x=>ConvertContentAreaItem(x, propertyModel));
+                    return propertyModel?.ExpandedValue?.Select(x => ConvertContentAreaItem(x, propertyModel));
                 case BuyTicketBlockPropertyModel propertyModel:
                     return propertyModel.Value;
                 case PropertyModel<string, PropertyString> propertyModel:

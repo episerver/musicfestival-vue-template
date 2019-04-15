@@ -7,7 +7,7 @@
 <template>
     <div class="ArtistDetailsPage">
         <nav class="Page-container PageHeader NavBar">
-            <BackButton :prevUrl="model.parentUrl"/>
+            <BackButton :prevUrl="model.parentLink.url"/>
             <LanguageSelector :existingLanguages="model.existingLanguages" :language="model.language"></LanguageSelector>
         </nav>
 
