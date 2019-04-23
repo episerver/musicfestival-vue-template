@@ -8,12 +8,12 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "episerver-cms",
+        "@episerver/cms",
         "vue"
     ],
     "extends": [
         "eslint:recommended",
-        "plugin:episerver-cms/recommended",
+        "plugin:@episerver/cms/recommended",
         "plugin:vue/essential"
     ],
     "rules": {
