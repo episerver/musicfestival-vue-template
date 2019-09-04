@@ -382,7 +382,7 @@
     <Content Include="Assets\Styles\Utils\utils-text.less" />
     <Content Include=".babelrc" />
     <Content Include="connectionStrings.config" />
-    <Content Include="Assets\Scripts\components\pages\ArtistDetailsPage.vue" />      
+    <Content Include="Assets\Scripts\components\pages\ArtistDetailsPage.vue" />
     <Content Include="Assets\Scripts\components\widgets\ArtistImage.vue" />
     <Content Include="Assets\Scripts\components\pages\ArtistContainerPage.vue" />
     <Content Include="Assets\Scripts\components\blocks\BuyTicketBlock.vue" />
@@ -454,6 +454,9 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>npm run build</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
