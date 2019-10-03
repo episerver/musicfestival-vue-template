@@ -335,9 +335,7 @@
     <Content Include="Assets\bundled\**\*.*" />
     <Content Include="Assets\EditMode\page-type-thumbnail.png" />
     <Content Include="Assets\Images\pattern-wave.svg" />
-    <Content Include="Assets\Images\spacer.gif" />
     <Content Include="Assets\Images\SVG\back.svg" />
-    <Content Include="Assets\Images\SVG\waves.svg" />
     <Content Include="Assets\Images\wave.svg" />
     <Content Include="Assets\Scripts\api\api.js" />
     <Content Include="Assets\Scripts\api\getComponentTypeForContent.js" />
