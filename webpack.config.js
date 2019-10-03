@@ -5,11 +5,11 @@ var path = require('path'),
 
 var config = {
     entry: {
-        main: ['babel-polyfill', './Assets/Scripts/main.js', './Assets/Styles/Main.less']
+        main: ['babel-polyfill', './src/MusicFestival.Vue.Template/Assets/Scripts/main.js', './src/MusicFestival.Vue.Template/Assets/Styles/Main.less']
     },
     output: {
-        path: path.resolve(__dirname, './Assets/bundled/'),
-        publicPath: '/Assets/bundled/',
+        path: path.resolve(__dirname, './src/MusicFestival.Vue.Template/Assets/bundled/'),
+        publicPath: '/src/MusicFestival.Vue.Template/Assets/bundled/',
         filename: '[name].bundle.js'
     },
     plugins: [
@@ -19,7 +19,7 @@ var config = {
     resolve: {
         alias: {
             vue: 'vue/dist/vue.js',
-            '@': path.join(__dirname, 'Assets')
+            '@': path.join(__dirname, 'src/MusicFestival.Vue.Template/Assets')
         }
     },
     module: {
@@ -76,7 +76,7 @@ var config = {
             exclude: /node_modules/,
             loader: 'eslint-loader',
             options: {
-                configFile: '../../.eslintrc.js'
+                configFile: '.eslintrc.js'
             }
         }
         ]
