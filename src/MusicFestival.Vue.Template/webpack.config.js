@@ -40,9 +40,6 @@ var config = {
                     },
                     {
                         loader: 'less-loader'
-                    },
-                    {
-                        loader: 'import-glob-loader'
                     }
                 ]
             })
