@@ -14,7 +14,7 @@
     </div>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
     @import '../../Styles/common/variables.less';
 
     .DefaultPage {

@@ -6,7 +6,7 @@
 -->
 
 <template>
-    <div class="LandingPage">
+    <div class="LandingPage" scoped>
         <nav class="Page-container PageHeader NavBar">
             <button class="Button buy-ticket-button" @click="showModal()">{{model.buyTicketBlock.heading}}</button>
             <language-selector :existingLanguages="model.existingLanguages" :language="model.language"></language-selector>
