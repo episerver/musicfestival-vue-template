@@ -22,7 +22,7 @@ export default {
      * Getting content with the content link is the default way of calling the ContentDeliveryAPI.
      * It is used in MusicFestival to get:
      *  - block data
-     *  - updated data after a `beta/contentSaved` message, which has the content link
+     *  - updated data after a `contentSaved` message, which has the content link
      */
     getContentByContentLink: (contentLink, parameters) =>
         get(`${applicationPath}api/episerver/v2.0/`, `content/${contentLink}`, parameters),

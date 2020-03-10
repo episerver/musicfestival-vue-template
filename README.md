@@ -39,7 +39,7 @@ This project uses:
 
 * [epiEdit.js](src/MusicFestival.Vue.Template/Assets/Scripts/directives/epiEdit.js): a directive that can be added on components to make them optionally editable (e.g. `<span v-epi-edit="Name">`), through `isEditable` and `epiDisableEditing`.
 * [EpiProperty.vue](src/MusicFestival.Vue.Template/Assets/Scripts/components/EpiProperty.vue): a component that renders a button to edit a property (e.g. `<epi-property property-name="Name">`).
-* [epiMessages.js](src/MusicFestival.Vue.Template/Assets/Scripts/epiMessages.js): registers the `beta/contentSaved` and `beta/epiReady` message handlers that updates the vuex store.
+* [epiMessages.js](src/MusicFestival.Vue.Template/Assets/Scripts/epiMessages.js): registers the `contentSaved` and `beta/epiReady` message handlers that updates the vuex store.
 
 ### Routing helpers
 

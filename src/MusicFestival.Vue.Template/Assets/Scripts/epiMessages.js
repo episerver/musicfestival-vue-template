@@ -6,7 +6,7 @@
  * These values are `false` by default and will be updated when the page has
  * finished loading. See the event handler at the bottom of the page.
  *
- * Also registers the `beta/contentSaved` event that will update
+ * Also registers the `contentSaved` event that will update
  * the model in the store during editing.
  */
 
@@ -26,7 +26,7 @@ function setContext() {
 
     // If we're in an editable context we want to update the model on every change by the editor
     if (window.epi.beta.isEditable) {
-        window.epi.subscribe('beta/contentSaved', message => {
+        window.epi.subscribe('contentSaved', message => {
             store.dispatch(UPDATE_MODEL_BY_CONTENT_LINK, message.contentLink);
         });
     }

@@ -5,7 +5,7 @@
 
     It gets its `model` from the vuex stores `epiDataModel` module that's
     automatically updated in OPE when data is edited (through the
-    `beta/contentSaved` event). The store also includes `modelLoaded` that's
+    `contentSaved` event). The store also includes `modelLoaded` that's
     set to true when the model has been populated in the store. This flag
     toggles the rendering of the page with `v-if`.
 -->
