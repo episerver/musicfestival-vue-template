@@ -12,8 +12,8 @@ import store from '@/Scripts/store';
 import { sync } from 'vuex-router-sync';
 sync(store, router);
 
-// `epiMessages` does not export anything but registers the `beta/contentSaved`
-// and `beta/epiReady` message handlers that updates the vuex store.
+// `epiMessages` does not export anything but registers the `contentSaved`
+// and `epiReady` message handlers that updates the vuex store.
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Import_a_module_for_its_side_effects_only
 import '@/Scripts/epiMessages';
 
