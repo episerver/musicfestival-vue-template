@@ -12,7 +12,7 @@
         "build:dev": "set NODE_ENV=development && webpack"
     },
     "dependencies": {
-        "axios": "^0.19.0",
+        "axios": "^0.21.1",
         "babel-polyfill": "^6.26.0",
         "vue": "^2.6.10",
         "vue-router": "^3.1.3",
